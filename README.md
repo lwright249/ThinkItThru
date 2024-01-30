@@ -3,4 +3,3 @@ Task management and motivation system designed to help users reach professional 
 
 The point is to encourage personal development, goal completion, and breakdown of difficult tasks.
 The site will be available on desktop or mobile.
-test
