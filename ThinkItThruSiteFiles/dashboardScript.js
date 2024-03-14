@@ -1,4 +1,15 @@
+const difficulty = {
+    EASY: 0.8,
+    MEDIUM: 1.0,
+    HARD: 1.2
+}
 
+//ASK ABOUT THIS
+const priority = {
+    LOW: 4,
+    MED: 2,
+    HIGH: 1
+}
 
 class BasicTask{
     constructor(name, timeReq){
@@ -31,8 +42,9 @@ class BasicTask{
 
 }
 
-class Task /*extends BasicTask*/{ //maybe i remove basictask and hope noone notices, it might just make my life easier
-    constructor(name, timeReq, taskPriority, taskDifficulty, minTimeToAssign, subtasksList = null){
+class Task extends BasicTask{ //maybe i remove basictask and hope noone notices, it might just make my life easier
+    constructor(name, timeReq, taskPriority, taskDifficulty, minTimeToAssign, daysUntilDue, subtasksList = null){
+        super();
         this.timeWorked = 0;
         this.isCompleted = false;
 
@@ -50,6 +62,10 @@ class Task /*extends BasicTask*/{ //maybe i remove basictask and hope noone noti
         this.taskDifficulty = taskDifficulty;
         this.minTimeToAssign = minTimeToAssign;
         this.subtasksList = subtasksList;
+
+        
+        //REPLACE daysUntilDue with an actual Date() object!
+        this.daysUntilDue = daysUntilDue;
     }
 
     getSubTasks(){
@@ -82,6 +98,11 @@ class Task /*extends BasicTask*/{ //maybe i remove basictask and hope noone noti
     //TODO temporary thing
     printName(){
         console.log(this.name);
+    }
+
+    getInfo(){
+        let infoString = "Name: " + this.name + " | " + this.timeWorked + " / " + this.timeReq + " minutes worked" + " | " + this.taskDifficulty + " difficulty and " + this.taskPriority + " priority" + " | " + this.daysUntilDue + " day(s) remaining";
+        return infoString;
     }
 
 }
@@ -120,7 +141,44 @@ class TaskList{
         }
 
         //replace with something smart!!!
-        this.taskList.push(task);
+        //this.taskList.push(task);
+        let newTaskQueueNum = task.daysUntilDue * task.taskPriority;
+        /*let currListSize = this.taskList.length;
+        this.taskList.forEach(
+            t => {
+                let iterationPriority = t.daysUntilDue * t.priority;
+
+                if(newTaskPriority < iterationPriority){
+                    this.taskList.splice()
+                }
+            }
+        )*/
+
+        if(this.taskList.length > 0 && newTaskQueueNum < (this.taskList[this.taskList.length - 1].daysUntilDue * this.taskList[this.taskList.length - 1].taskPriority)){
+            console.log("NOT pushed to back");
+            for(let i = 0; i < /*this.taskList.length*/ 2; i++){
+            console.log("iteration: " + i);
+            let iterationPriority = this.taskList[i].daysUntilDue * this.taskList[i].taskPriority;
+
+                if(newTaskQueueNum < iterationPriority){
+                    console.log("this one's gonna crash huh");
+                    this.taskList.splice(i, 0, task);
+                }
+            }
+        }
+        else{
+            console.log("list length: " + this.taskList.length);
+            if(this.taskList.length > 0){
+                console.log("last priority #: " + this.taskList[this.taskList.length - 1].taskPriority);
+                console.log("current priority #: " + task.taskPriority);
+            }
+
+
+            console.log("pushed to back");
+            this.taskList.push(task);
+        }
+
+        
     }
 
     removeTask(index){
@@ -128,11 +186,17 @@ class TaskList{
     }
 
     logTasks(){
-        this.taskList.forEach(); //aldkfjlkdjfklajdlfkajdlkfjadkljflk
+        this.taskList.forEach(
+            t => {
+                console.log(t.getInfo());
+            }
+        )
     }
 }
 
 console.log("Hello World!");
 let myTaskList = new TaskList();
-myTaskList.addTask(new Task("task one", 2, 3, 4));
+myTaskList.addTask(new Task("task one", 2, priority.LOW, difficulty.HARD, 15, 100));
+myTaskList.addTask(new Task("task two", 2, priority.HIGH, difficulty.HARD, 15, 1));
+myTaskList.logTasks();
 console.log("done");
