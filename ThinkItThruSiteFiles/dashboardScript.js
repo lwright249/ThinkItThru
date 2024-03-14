@@ -156,7 +156,7 @@ class TaskList{
 
         if(this.taskList.length > 0 && newTaskQueueNum < (this.taskList[this.taskList.length - 1].daysUntilDue * this.taskList[this.taskList.length - 1].taskPriority)){
             console.log("NOT pushed to back");
-            for(let i = 0; i < /*this.taskList.length*/ 2; i++){
+            for(let i = 0; i < /*this.taskList.length*/ 2; i++){ //change hereadfadfadfdfdfd
             console.log("iteration: " + i);
             let iterationPriority = this.taskList[i].daysUntilDue * this.taskList[i].taskPriority;
 
