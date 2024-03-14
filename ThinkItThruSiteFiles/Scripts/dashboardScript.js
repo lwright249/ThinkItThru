@@ -6,9 +6,9 @@ const difficulty = {
 
 //ASK ABOUT THIS
 const priority = {
-    LOW: 4,
+    LOW: 1,
     MED: 2,
-    HIGH: 1
+    HIGH: 4
 }
 
 class BasicTask{
@@ -101,8 +101,16 @@ class Task extends BasicTask{ //maybe i remove basictask and hope noone notices,
     }
 
     getInfo(){
-        let infoString = "Name: " + this.name + " | " + this.timeWorked + " / " + this.timeReq + " minutes worked" + " | " + this.taskDifficulty + " difficulty and " + this.taskPriority + " priority" + " | " + this.daysUntilDue + " day(s) remaining" + " | queue# = " + (this.daysUntilDue * this.taskPriority);
+        let infoString = "Name: " + this.name + " | " + this.timeWorked + " / " + this.timeReq + " minutes worked" + " | " + this.taskDifficulty + " difficulty and " + this.taskPriority + " priority" + " | " + this.daysUntilDue + " day(s) remaining" + " | queueScore = " + this.getQueueScore();
         return infoString;
+    }
+
+    getTimeRemaining(){
+        return this.timeReq - this.timeWorked;
+    }
+
+    getQueueScore(){
+        return (this.getTimeRemaining() * this.taskPriority) / this.daysUntilDue;
     }
 
 }
@@ -142,7 +150,7 @@ class TaskList{
 
         //replace with something smart!!!
         //this.taskList.push(task);
-        let newTaskQueueNum = task.daysUntilDue * task.taskPriority;
+        let newTaskQueueScore = task.getQueueScore();
         /*let currListSize = this.taskList.length;
         this.taskList.forEach(
             t => {
@@ -154,9 +162,8 @@ class TaskList{
             }
         )*/
 
-        this.taskList.length
-
-        if(this.taskList.length > 0 && newTaskQueueNum < (this.taskList[this.taskList.length - 1].daysUntilDue * this.taskList[this.taskList.length - 1].taskPriority)){
+        //makes sure the taskList actually has something in it, also checks if we should just add the task to the back (for speeeeed)
+        if(this.taskList.length > 0 && newTaskQueueScore > this.taskList[this.taskList.length - 1].getQueueScore()){
             console.log("NOT pushed to back");
             console.log("tasklist length: " + this.taskList.length);
 
@@ -165,9 +172,9 @@ class TaskList{
             
             for(let i = 0; (i < this.taskList.length && !newTaskPushed); i++){
             console.log("iteration: " + i);
-            let iterationPriority = this.taskList[i].daysUntilDue * this.taskList[i].taskPriority;
+            let iterationQueueScore = (this.taskList[i].getTimeRemaining() * this.taskList[i].taskPriority) / this.taskList[i].daysUntilDue;
 
-                if(newTaskQueueNum < iterationPriority){
+                if(newTaskQueueScore > iterationQueueScore){
                     console.log("this one's gonna crash huh");
                     this.taskList.splice(i, 0, task);
                     newTaskPushed = true;
@@ -176,12 +183,6 @@ class TaskList{
         }
         else{
             console.log("list length: " + this.taskList.length);
-            if(this.taskList.length > 0){
-                console.log("last priority #: " + this.taskList[this.taskList.length - 1].taskPriority);
-                console.log("current priority #: " + task.taskPriority);
-            }
-
-
             console.log("pushed to back");
             this.taskList.push(task);
         }
@@ -201,6 +202,8 @@ class TaskList{
         )
     }
 }
+
+
 
 console.log("Hello World!");
 let myTaskList = new TaskList();
