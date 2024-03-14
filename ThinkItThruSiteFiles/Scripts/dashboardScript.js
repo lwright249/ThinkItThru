@@ -101,7 +101,7 @@ class Task extends BasicTask{ //maybe i remove basictask and hope noone notices,
     }
 
     getInfo(){
-        let infoString = "Name: " + this.name + " | " + this.timeWorked + " / " + this.timeReq + " minutes worked" + " | " + this.taskDifficulty + " difficulty and " + this.taskPriority + " priority" + " | " + this.daysUntilDue + " day(s) remaining";
+        let infoString = "Name: " + this.name + " | " + this.timeWorked + " / " + this.timeReq + " minutes worked" + " | " + this.taskDifficulty + " difficulty and " + this.taskPriority + " priority" + " | " + this.daysUntilDue + " day(s) remaining" + " | queue# = " + (this.daysUntilDue * this.taskPriority);
         return infoString;
     }
 
@@ -154,15 +154,23 @@ class TaskList{
             }
         )*/
 
+        this.taskList.length
+
         if(this.taskList.length > 0 && newTaskQueueNum < (this.taskList[this.taskList.length - 1].daysUntilDue * this.taskList[this.taskList.length - 1].taskPriority)){
             console.log("NOT pushed to back");
-            for(let i = 0; i < /*this.taskList.length*/ 2; i++){ //change hereadfadfadfdfdfd
+            console.log("tasklist length: " + this.taskList.length);
+
+            let listLength = this.taskList.length;
+            let newTaskPushed = false;
+            
+            for(let i = 0; (i < this.taskList.length && !newTaskPushed); i++){
             console.log("iteration: " + i);
             let iterationPriority = this.taskList[i].daysUntilDue * this.taskList[i].taskPriority;
 
                 if(newTaskQueueNum < iterationPriority){
                     console.log("this one's gonna crash huh");
                     this.taskList.splice(i, 0, task);
+                    newTaskPushed = true;
                 }
             }
         }
@@ -196,7 +204,9 @@ class TaskList{
 
 console.log("Hello World!");
 let myTaskList = new TaskList();
-myTaskList.addTask(new Task("task one", 2, priority.LOW, difficulty.HARD, 15, 100));
-myTaskList.addTask(new Task("task two", 2, priority.HIGH, difficulty.HARD, 15, 1));
+myTaskList.addTask(new Task("task one", 2, priority.HIGH, difficulty.HARD, 15, 2));
+myTaskList.addTask(new Task("task two", 2, priority.MED, difficulty.HARD, 15, 3));
+myTaskList.addTask(new Task("task three", 2, priority.LOW, difficulty.EASY, 15, 1));
+myTaskList.addTask(new Task("task four", 2, priority.HIGH, difficulty.HARD, 15, 3));
 myTaskList.logTasks();
 console.log("done");
