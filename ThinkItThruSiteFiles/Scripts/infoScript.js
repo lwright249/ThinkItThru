@@ -63,8 +63,6 @@ class Task extends BasicTask{ //maybe i remove basictask and hope noone notices,
         this.minTimeToAssign = minTimeToAssign;
         this.subtasksList = subtasksList;
 
-        
-        //REPLACE with an actual Date() object!
         this.dueDate = dueDate;
     }
 
@@ -180,7 +178,7 @@ class TaskList{
             let iterationQueueScore = (this.taskList[i].getTimeRemaining() * this.taskList[i].taskPriority) / this.taskList[i].getDaysUntilDue();
 
                 if(newTaskQueueScore > iterationQueueScore){
-                    console.log("this one's gonna crash huh");
+                    console.log("pushing in middle");
                     this.taskList.splice(i, 0, task);
                     newTaskPushed = true;
                 }
@@ -197,6 +195,10 @@ class TaskList{
 
     removeTask(index){
 
+    }
+
+    getTask(index){
+        return this.taskList[index];
     }
 
     logTasks(){
