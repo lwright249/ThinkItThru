@@ -3,13 +3,13 @@ class DailyObjectivesList{
         this.objTaskList = objTaskList;
         this.dayList = [];
 
-        this.objectivesList = new TaskList();
+        this.objectivesList = [];
         this.bonusMultiplier = 1;
         //TODO ensure tasks in taskList marked complete when they are checked off on the website
         //also find out if this var is necessary or covered by checkObjComplete??
         this.allObjectivesDone = false;
 
-        this.updateObjectives();
+        this.createObjectives();
     }
 
     //slow, O(n^3)??-ish
@@ -62,7 +62,8 @@ class DailyObjectivesList{
         }
     }
 
-    updateObjectives(){
+    //TODO: this does not implement recurring tasks I don't think
+    createObjectives(){
         let oldCeiling = 0;
         let newCeiling = 0;
         let totalTime = 0;
@@ -70,6 +71,7 @@ class DailyObjectivesList{
         let timeToWorkInDay = 0;
         let today = new Day();
 
+        //iterates through each "day" that has a task due
         this.dayList.forEach(day => {
             //totals time to work in this day
             day.indexList.forEach(index => {
@@ -97,7 +99,9 @@ class DailyObjectivesList{
                     //myTaskList.addTask(new Task("task five", 2, priority.HIGH, difficulty.HARD, 15, new Date(2024, 3, 26)));
 
                     //using push instead of addTask() for speed :3
-                    
+                    let newObjective = new Objective(this.objTaskList.taskList[index]);
+                    this.objectivesList.push(newObjective);
+
                 });
             }
 
@@ -120,7 +124,9 @@ class DailyObjectivesList{
     }
 
     displayObjectivesList(){
-
+        this.objectivesList.forEach(objective => {
+            console.log(objective.objTask.getInfo());
+        })
     }
 
     //temporary!!!
@@ -152,5 +158,14 @@ class Day{
             //console.log("hello");
             console.log(indexInDay);
         });
+    }
+}
+
+//please work
+class Objective{
+    constructor(objTask){
+        this.objTask = objTask
+        this.timeWorkedOnBeforeCreation = objTask.getTimeRemaining();
+        this.timeWorkedOnAfterCreation = 0;
     }
 }

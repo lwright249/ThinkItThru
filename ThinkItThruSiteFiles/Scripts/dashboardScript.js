@@ -10,7 +10,7 @@ myTaskList.logTasks();
 console.log("done");
 
 let taskToChange = myTaskList.getTask(1);
-taskToChange.name = "CHANGEED";
+taskToChange.name = "CHANGED";
 
 myTaskList.logTasks();
 
