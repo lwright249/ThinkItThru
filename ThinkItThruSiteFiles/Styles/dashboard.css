@@ -1,0 +1,69 @@
+body{
+    margin: 0;
+    background-image: url(notebook-background.jpg);
+  }
+  
+    /* Style the navigation menu */
+  
+    /* Style the active link (or home/logo) */
+    #DashTitle {
+      opacity: 1;
+      background-color: #a0cfd3;
+      color: black;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+      display: block;
+      margin: 0;
+      text-align: center;
+    }
+  
+      /* Hide the links inside the navigation menu (except for logo/home) */
+      #LinkContainer {
+        display: none;
+        background-color: gray;
+      }
+    
+    /* Style navigation menu links */
+    .topnav a{
+      color: white;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+      display: block;
+    }
+    
+    /* Style the hamburger menu */
+    .topnav a.icon {
+      color: white;
+      background: gray;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    
+    /* Add a grey background color on mouse-over */
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    
+  
+  
+  .TaskContainer{
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+  }
+  
+  .task{
+    opacity: .6;
+    background: #c9ffe2;
+    margin: 5px 40px 5px 70px;
+    border-radius: 10px;
+    
+  }
+  
+  h2{
+  text-align: center;
+  }

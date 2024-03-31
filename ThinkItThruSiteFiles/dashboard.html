@@ -4,11 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css">
+    <link rel="stylesheet" href="Styles/dashboard.css">
+
 </head>
 <body>
     <script src="Scripts/infoScript.js"></script>
     <script src="Scripts/objectivesLists.js"></script>
     <script src="Scripts/dashboardScript.js"></script>
+
+    <!-- Top Navigation Menu -->
+    <header>
+        <div class="topnav">
+            <h1 id="DashTitle">Dashboard</h1>
+    
+            <!-- Navigation links (hidden by default) -->
+            <nav id="LinkContainer">
+                <a href="#CreateTask" class="navlinks">Create Task</a>
+                <a href="#Settings" class="navlinks">Settings</a>
+                <a href="#SignOut" class="navlinks">Sign Out</a>
+            </nav>
+    
+            <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+            <a href="javascript:void(0);" class="icon" onclick="showLinks()">
+                <i class="iconoir-menu"></i>
+            </a>
+        </div>
+    </header>
+
+
+    <!--First Task Section-->
+    <h2>Tasks Today</h2>
+    <hr>
+    <div class="TaskContainer">
+        <div class="task">
+            task1
+        </div>
+        <div class="task">
+            task2
+        </div>
+    </div>
+
+
+    <!--Second Task Section-->
+    <h2>Tasks Future</h2>
+    <hr>
+    <div class="TaskContainer">
+        <div class="task">
+            task1
+        </div>
+        <div class="task">
+            task2
+        </div>
+
+
+
+
+
 
     <div id="myDiv"></div>
     

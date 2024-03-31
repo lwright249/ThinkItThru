@@ -31,3 +31,12 @@ for (let i = 1; i <= 10; i++) {
 }
 
 container.appendChild(numberList);*/
+
+function showLinks() {
+  var x = document.getElementById("LinkContainer");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
