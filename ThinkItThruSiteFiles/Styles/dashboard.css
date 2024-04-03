@@ -56,7 +56,7 @@ body{
     text-align: center;
   }
   
-  .task{
+  .TaskBox{
     opacity: .6;
     background: #c9ffe2;
     margin: 5px 40px 5px 70px;
