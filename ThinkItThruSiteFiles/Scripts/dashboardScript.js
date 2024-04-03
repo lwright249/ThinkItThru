@@ -1,11 +1,11 @@
 console.log("Hello World!");
 let myTaskList = new TaskList();
-myTaskList.addTask(new Task("task one", 200, priority.HIGH, difficulty.HARD, 15, new Date(2024, 4, 5)));
-myTaskList.addTask(new Task("task two", 200, priority.MED, difficulty.HARD, 15, new Date(2024, 4, 6)));
-myTaskList.addTask(new Task("task three", 200, priority.LOW, difficulty.EASY, 15, new Date(2024, 4, 4)));
+myTaskList.addTask(new Task("task one", 200, priority.HIGH, difficulty.HARD, 15, new Date(2024, 3, 5)));
+myTaskList.addTask(new Task("task two", 200, priority.MED, difficulty.HARD, 15, new Date(2024, 3, 6)));
+myTaskList.addTask(new Task("task three", 200, priority.LOW, difficulty.EASY, 15, new Date(2024, 3, 4)));
 //its not adding this one for some reason?
-myTaskList.addTask(new Task("task four", 200, priority.HIGH, difficulty.HARD, 15, new Date(2024, 4, 6)));
-myTaskList.addTask(new Task("task five", 200, priority.HIGH, difficulty.HARD, 15, new Date(2024, 4, 3)));
+myTaskList.addTask(new Task("task four", 200, priority.HIGH, difficulty.HARD, 15, new Date(2024, 3, 6)));
+myTaskList.addTask(new Task("task five", 200, priority.HIGH, difficulty.HARD, 15, new Date(2024, 3, 3)));
 myTaskList.logTasks();
 console.log("done");
 
@@ -17,6 +17,9 @@ myTaskList.logTasks();
 let myObj = new DailyObjectivesList(myTaskList);
 myObj.printDayList();
 myObj.displayObjectivesList();
+
+
+console.log("days until assignment is due: " + DateManipulation.daysUntilDue(myTaskList.getTask(1).dueDate))
 /*
 
 const container = document.getElementById('myDiv');
