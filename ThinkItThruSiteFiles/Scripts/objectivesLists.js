@@ -13,7 +13,7 @@ class DailyObjectivesList{
         this.createObjectives();
     }
 
-    //slow, O(n^3)??-ish
+    //used in constructor, creates the list of days due to create DailyObjectives
     createDayList(){
         //this loop might break things
         for(let i = 0; i < this.objTaskList.taskList.length; i++){
@@ -46,6 +46,7 @@ class DailyObjectivesList{
         }
     }
 
+    //used to create Day list, organizes days by order of.... days
     pushInPlace(dayToPush){
         let isPushedInMiddle = false;
 
@@ -63,7 +64,8 @@ class DailyObjectivesList{
         }
     }
 
-    //TODO: this does not implement recurring tasks I don't think
+    //TODO: this does not implement recurring tasks I don't think (we could always set the due date for recurring tasks as every saturday)
+    //actually creates daily objectives list
     createObjectives(){
         let oldCeiling = 0;
         let newCeiling = 0;
@@ -146,6 +148,7 @@ class DailyObjectivesList{
 
 }
 
+//object containing array of every index of task due on the same date
 class Day{
     constructor(dayDate){
         this.dayDate = dayDate;
@@ -167,7 +170,7 @@ class Day{
     }
 }
 
-//please work
+//the actual objective, acts as a sort of Task (BUT NOT!!!)
 class Objective{
     constructor(objName, timeToWork, taskListIndex){
         this.objName = objName;
