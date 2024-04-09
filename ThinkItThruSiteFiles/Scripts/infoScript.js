@@ -1,10 +1,3 @@
-const difficulty = {
-    EASY: 0.8,
-    MEDIUM: 1.0,
-    HARD: 1.2
-}
-
-//ASK ABOUT THIS
 const priority = {
     LOW: 1,
     MED: 2,
@@ -43,7 +36,7 @@ class BasicTask{
 }
 
 class Task extends BasicTask{ //maybe i remove basictask and hope noone notices, it might just make my life easier
-    constructor(name, timeReq, taskPriority, taskDifficulty, minTimeToAssign, dueDate, subtasksList = null){
+    constructor(name, timeReq, taskPriority, minTimeToAssign, dueDate, subtasksList = null){
         super();
         this.timeWorked = 0;
         this.isCompleted = false;
@@ -59,7 +52,6 @@ class Task extends BasicTask{ //maybe i remove basictask and hope noone notices,
         this.name = name;
         this.timeReq = timeReq;
         this.taskPriority = taskPriority;
-        this.taskDifficulty = taskDifficulty;
         this.minTimeToAssign = minTimeToAssign;
         this.subtasksList = subtasksList;
 
@@ -99,7 +91,7 @@ class Task extends BasicTask{ //maybe i remove basictask and hope noone notices,
     }
 
     getInfo(){
-        let infoString = "Name: " + this.name + " | " + this.timeWorked + " / " + this.timeReq + " minutes worked" + " | " + this.taskDifficulty + " difficulty and " + this.taskPriority + " priority" + " | " + this.getDaysUntilDue() + " day(s) remaining" + " | queueScore = " + this.getQueueScore();
+        let infoString = "Name: " + this.name + " | " + this.timeWorked + " / " + this.timeReq + " minutes worked" + " | " + this.taskPriority + " priority" + " | " + this.getDaysUntilDue() + " day(s) remaining" + " | queueScore = " + this.getQueueScore();
         return infoString;
     }
 
