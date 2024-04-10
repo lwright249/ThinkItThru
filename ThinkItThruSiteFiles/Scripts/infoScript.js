@@ -36,7 +36,7 @@ class BasicTask{
 }
 
 class Task extends BasicTask{ //maybe i remove basictask and hope noone notices, it might just make my life easier
-    constructor(name, timeReq, taskPriority, minTimeToAssign, dueDate, subtasksList = null){
+    constructor(name, timeReq, taskPriority, dueDate, subtasksList = null){
         super();
         this.timeWorked = 0;
         this.isCompleted = false;
@@ -52,7 +52,6 @@ class Task extends BasicTask{ //maybe i remove basictask and hope noone notices,
         this.name = name;
         this.timeReq = timeReq;
         this.taskPriority = taskPriority;
-        this.minTimeToAssign = minTimeToAssign;
         this.subtasksList = subtasksList;
 
         this.dueDate = dueDate;
@@ -90,34 +89,39 @@ class Task extends BasicTask{ //maybe i remove basictask and hope noone notices,
         console.log(this.name);
     }
 
+    //prints the Task information, used to show TaskList items to console
     getInfo(){
         let infoString = "Name: " + this.name + " | " + this.timeWorked + " / " + this.timeReq + " minutes worked" + " | " + this.taskPriority + " priority" + " | " + this.getDaysUntilDue() + " day(s) remaining" + " | queueScore = " + this.getQueueScore();
         return infoString;
     }
 
+    //shows work time left to do for this Task
     getTimeRemaining(){
         return this.timeReq - this.timeWorked;
     }
 
+    //calculates queue score, higher score means it is higher on the TaskList (in terms of index, therefore display)
     getQueueScore(){
         return (this.getTimeRemaining() * this.taskPriority) / (this.getDaysUntilDue() + 1);
     }
 
+    //calculates how many days a Task has left
     getDaysUntilDue(){
-        let now = new Date();
-        return this.dueDate.getDate() - now.getDate();
+        return DateManipulation.daysUntilDue(this.dueDate);
     }
 
 }
 
+//not implemented yet
 class SubTask extends BasicTask{
     //do I need subtask index here?
 
     getName(){
-        return this.name + ": " + this.timeWorked + " minutes out of " + this.timeReq;
+        return this.name;
     }
 }
 
+//One per user, will be used to store Tasks, and is used to instantiate Objectives List in another script
 class TaskList{
     constructor(firstTask = null){
         if(this.firstTask == null){
@@ -129,34 +133,16 @@ class TaskList{
         
     }
 
-    evaluateDailyTasks(){
-        //hard stuff here
-    }
-
-    evaluateWeeklyTasks(){
-        //harder stuff here
-    }
-
+    //adds a Task to the TaskList, ranked by queuescore
     addTask(task){
         if(this.taskList == null){
             console.log("error, task list null");
             return;
         }
 
-        //replace with something smart!!!
-        //this.taskList.push(task);
+       
         let newTaskQueueScore = task.getQueueScore();
-        /*let currListSize = this.taskList.length;
-        this.taskList.forEach(
-            t => {
-                let iterationPriority = t.daysUntilDue * t.priority;
-
-                if(newTaskPriority < iterationPriority){
-                    this.taskList.splice()
-                }
-            }
-        )*/
-
+        
         //makes sure the taskList actually has something in it, also checks if we should just add the task to the back (for speeeeed)
         if(this.taskList.length > 0 && newTaskQueueScore > this.taskList[this.taskList.length - 1].getQueueScore()){
             console.log("NOT pushed to back");
@@ -186,13 +172,14 @@ class TaskList{
     }
 
     removeTask(index){
-
+        //nothing here yet
     }
 
     getTask(index){
         return this.taskList[index];
     }
 
+    //prints all Tasks in TaskList to console
     logTasks(){
         this.taskList.forEach(
             t => {
@@ -201,11 +188,3 @@ class TaskList{
         )
     }
 }
-
-/*
-let now = new Date();
-let tomorrow = new Date(2024, 3, 24);
-let daysRemaining = tomorrow.getDate() - now.getDate();
-
-console.log(daysRemaining);
-*/
