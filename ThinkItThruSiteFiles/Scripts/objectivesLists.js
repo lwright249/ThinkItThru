@@ -9,10 +9,11 @@ class DailyObjectivesList{
         //also find out if this var is necessary or covered by checkObjComplete??
         this.allObjectivesDone = false;
 
+        this.createDayList();
         this.createObjectives();
     }
 
-    //slow, O(n^3)??-ish
+    //used in constructor, creates the list of days due to create DailyObjectives
     createDayList(){
         //this loop might break things
         for(let i = 0; i < this.objTaskList.taskList.length; i++){
@@ -45,6 +46,7 @@ class DailyObjectivesList{
         }
     }
 
+    //used to create Day list, organizes days by order of.... days
     pushInPlace(dayToPush){
         let isPushedInMiddle = false;
 
@@ -62,14 +64,17 @@ class DailyObjectivesList{
         }
     }
 
-    //TODO: this does not implement recurring tasks I don't think
+    //TODO: this does not implement recurring tasks I don't think (we could always set the due date for recurring tasks as every saturday)
+    //actually creates daily objectives list
     createObjectives(){
         let oldCeiling = 0;
         let newCeiling = 0;
         let totalTime = 0;
         let timeToAdd = 0;
         let timeToWorkInDay = 0;
-        let today = new Day();
+        let today = new Date();
+
+        console.log(today.getDate());
 
         //iterates through each "day" that has a task due
         this.dayList.forEach(day => {
@@ -82,7 +87,7 @@ class DailyObjectivesList{
 
             //check if this day's date is less than today
             if((day.dayDate.getDate() - today.getDate()) >= 1){
-                newCeiling = totalTime / ((day.dayDate.getDate() - today.getDate())+1);
+                newCeiling = totalTime / ( (day.dayDate.getDate() - today.getDate() )+1);
             }
             //if task overdue, it treats it as if the task is due today (just like being divided by one)
             else{
@@ -98,8 +103,9 @@ class DailyObjectivesList{
                     //TODO add task to objectivesList
                     //myTaskList.addTask(new Task("task five", 2, priority.HIGH, difficulty.HARD, 15, new Date(2024, 3, 26)));
 
-                    //using push instead of addTask() for speed :3
-                    let newObjective = new Objective(this.objTaskList.taskList[index]);
+
+                    console.log("current task: " + this.objTaskList.taskList[index].name);
+                    let newObjective = new Objective(this.objTaskList.taskList[index].name, timeToAdd, index);
                     this.objectivesList.push(newObjective);
 
                 });
@@ -125,7 +131,9 @@ class DailyObjectivesList{
 
     displayObjectivesList(){
         this.objectivesList.forEach(objective => {
-            console.log(objective.objTask.getInfo());
+            //console.log(objective.objTask.getInfo());
+            objective.printObjective();
+
         })
     }
 
@@ -140,6 +148,7 @@ class DailyObjectivesList{
 
 }
 
+//object containing array of every index of task due on the same date
 class Day{
     constructor(dayDate){
         this.dayDate = dayDate;
@@ -161,11 +170,22 @@ class Day{
     }
 }
 
-//please work
+//the actual objective, acts as a sort of Task (BUT NOT!!!)
 class Objective{
-    constructor(objTask){
-        this.objTask = objTask
-        this.timeWorkedOnBeforeCreation = objTask.getTimeRemaining();
-        this.timeWorkedOnAfterCreation = 0;
+    constructor(objName, timeToWork, taskListIndex){
+        this.objName = objName;
+        this.timeToWork = timeToWork;
+        this.taskListIndex = taskListIndex;
+        this.timeWorkedOn = 0;
+        this.isComplete = false;
+    }
+    update(timeWorked){
+        this.timeWorkedOn += timeWorked;
+        if(this.timeWorkedOn >= this.timeToWork){
+            this.isComplete = true;
+        }
+    }
+    printObjective(){
+        console.log("work on " + this.objName + " for " + this.timeToWork + " minutes" + "      index=" + this.taskListIndex);
     }
 }
