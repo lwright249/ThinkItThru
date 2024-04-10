@@ -14,22 +14,25 @@
     <script src="Scripts/timeScript.js"></script>
     <script src="Scripts/dashboardScript.js"></script>
 
-    <!-- Top Navigation Menu -->
+    <!-- Top Navigation menu -->
     <header>
         <div class="topnav">
-            <h1 id="DashTitle">Dashboard</h1>
+
+            <h1 class="DashTitle">Dashboard</h1>
     
+            <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+            <a href="javascript:void(0);" class="icon" onclick="showLinks()">
+                <!--<i class="iconoir-menu"></i>-->
+                <span>&#9776</span>
+            </a>
+
             <!-- Navigation links (hidden by default) -->
             <nav id="LinkContainer">
                 <a href="#CreateTask" class="navlinks">Create Task</a>
                 <a href="#Settings" class="navlinks">Settings</a>
                 <a href="#SignOut" class="navlinks">Sign Out</a>
             </nav>
-    
-            <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
-            <a href="javascript:void(0);" class="icon" onclick="showLinks()">
-                <i class="iconoir-menu"></i>
-            </a>
+
         </div>
     </header>
 
@@ -38,19 +41,33 @@
     <h2>Tasks Today</h2>
     <hr>
 
-    <div class="TaskContainer">
+    <div class="TaskBoxSection">
+
         <div class="TaskBox">
-            <div class="task">task</div>
-            <div class="subtask">subtask1</div>
-            <div class="subtask">subtask2</div>
+            <div class="Task">
+                <div class="EditTaskBtn"><a href="javascript:void(0);" class="icon" onclick="showLinks()"><img src="Styles/more-horiz.svg"></img> </a></div>
+                <div class="TaskName"><h3>Task 1</h3> <p>Time Left: 10:04:31</p></div>
+                <div class="PauseAndPlay"><h3>Pause/Play</h3> <p>Time Spent: 1:02:15</p></div>
+                <div class="CheckBtn"><button><span>&#9744</span><span id="checkmark">&#10008</span></button></div>
+            </div>
+
+            <div class="Subtask"><p>subtask1</p></div>
+            <div class="Subtask"><p>subtask2</p></div>
         </div>
-    </div>
-    <div class="TaskContainer">
+
+
         <div class="TaskBox">
-            <div class="task">task</div>
-            <div class="subtask">subtask1</div>
-            <div class="subtask">subtask2</div>
+            <div class="Task">
+                <div class="EditTaskBtn"><a href="javascript:void(0);" class="icon" onclick="showLinks()"><img src="Styles/more-horiz.svg"></img> </a></div>
+                <div class="TaskName"><h3>Task 1</h3> <p>Time Left: 10:04:31</p></div>
+                <div class="PauseAndPlay"><h3>Pause/Play</h3> <p>Time Spent: 1:02:15</p></div>
+                <div class="CheckBtn"><button><span>&#9744</span><span id="checkmark">&#10008</span></button></div>
+            </div>
+
+            <div class="Subtask"><p>subtask1</p></div>
+            <div class="Subtask"><p>subtask2</p></div>
         </div>
+
     </div>
 
 
@@ -58,32 +75,30 @@
     <h2>Tasks Future</h2>
     <hr>
 
-    <div class="TaskContainer">
+    <div class="TaskBoxSection">
+
+
         <div class="TaskBox">
-            <div class="task">task</div>
-            <div class="subtask">subtask1</div>
-            <div class="subtask">subtask2</div>
+            <div class="Task">
+                <div class="EditTaskBtn"><a href="javascript:void(0);" class="icon" onclick="showLinks()"><img src="Styles/more-horiz.svg"></img> </a></div>
+                <div class="TaskName"><h3>Task 1</h3> <p>Time Left: 10:04:31</p></div>
+                <div class="PauseAndPlay"><h3>Pause/Play</h3> <p>Time Spent: 1:02:15</p></div>
+                <div class="CheckBtn"><button><span>&#9744</span><span id="checkmark">&#10008</span></button></div>
+            </div>
+
+            <div class="Subtask"><p>subtask1</p></div>
+            <div class="Subtask">subtask2</div>
         </div>
-    </div>
-    <div class="TaskContainer">
         <div class="TaskBox">
-            <div class="task">task</div>
-            <div class="subtask">subtask1</div>
-            <div class="subtask">subtask2</div>
-        </div>
-    </div>
-    <div class="TaskContainer">
-        <div class="TaskBox">
-            <div class="task">task</div>
-            <div class="subtask">subtask1</div>
-            <div class="subtask">subtask2</div>
-        </div>
-    </div>
-    <div class="TaskContainer">
-        <div class="TaskBox">
-            <div class="task">task</div>
-            <div class="subtask">subtask1</div>
-            <div class="subtask">subtask2</div>
+            <div class="Task">
+                <div class="EditTaskBtn"><a href="javascript:void(0);" class="icon" onclick="showLinks()"><img src="Styles/more-horiz.svg"></img> </a></div>
+                <div class="TaskName"><h3>Task 1</h3> <p>Time Left: 10:04:31</p></div>
+                <div class="PauseAndPlay"><h3>Pause/Play</h3> <p>Time Spent: 1:02:15</p></div>
+                <div class="CheckBtn"><button><span>&#9744</span><span id="checkmark">&#10008</span></button></div>
+            </div>
+
+            <div class="Subtask">subtask1</div>
+            <div class="Subtask">subtask2</div>
         </div>
     </div>
 
