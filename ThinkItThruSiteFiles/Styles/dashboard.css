@@ -93,48 +93,42 @@ h2{
 .TaskBox{
   background: #c9ffe2;
   margin-bottom: 12px;
+  padding: 5px;
 }
 
 
 /*Task/Subtask Section*/
 .Task{
   background-color: lightgray;
-  margin: 5px;
-  margin-bottom: 20px;
   padding: 5px;
-
+  margin-bottom: 20px;
   display: grid;
+
   grid-template-areas:
   "EditButton . ."
   "TaskName . PausePlay"
   ". . CheckBtn";
-  gap: 10px;
   grid-template-columns: 1fr .3fr 1fr;
   grid-template-rows: auto 1fr 1fr;
-
+  gap: 10px;
 }
+
 .Task div{
   background-color: green;
-  }
+}
 
+.EditTaskBtn button{
+  background:gray;
+  text-decoration: none;
+  display:block;
+  width: 10vw;
+  border: none;
+}
 
-
-.Subtask{
-  background-color: blue;
-  margin-bottom: 5px;
-  }
-
-.EditTaskBtn a{
-    background:gray;
-    display:block;
-    width: 10vw;
-    text-decoration: none;
-  }
-
-.EditTaskBtn img{
-    height: 6vw;
-    width: 6vw;
-  }
+.EditTaskBtn button img{
+  height: 6vw;
+  width: 6vw;
+}
 
 .TaskName{
   grid-area: TaskName;
@@ -144,9 +138,28 @@ h2{
   grid-area: PausePlay;
 }
 
+.PausePlayButton{
+  padding-top:10%;
+  background:none;
+  border:none;
+}
+
+.PausePlayButton #playimg{
+  display: block;
+  width: 15vw;
+  height: 15vw;
+}
+
+.PausePlayButton #pauseimg{
+  display: none;
+  width: 15vw;
+  height: 15vw;
+}
+
 .CheckBtn{
   grid-area: CheckBtn;
-  padding-top: 10%;
+  padding-top: 20%;
+  padding-left: 20%;
 }
 .CheckBtn button{
   background: none;
@@ -163,6 +176,15 @@ h2{
   visibility: hidden;
 }
 
+
+
+.Subtask{
+  background-color: blue;
+  margin-bottom: 5px;
+}
+
 .Subtask p{
   text-align: left;
+  font-size: 6vw;
+  padding-left: 10px;
 }

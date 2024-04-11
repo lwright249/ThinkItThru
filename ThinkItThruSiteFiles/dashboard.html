@@ -46,14 +46,19 @@
         <!--Taskbox is a container for tasks and subtasks-->
         <div class="TaskBox">
             <div class="Task">
-                <div class="EditTaskBtn"><a href="javascript:void(0);" class="icon" onclick="void(0)"><img src="Styles/more-horiz.svg"></img> </a></div>
+                <div class="EditTaskBtn"><button class="icon" onclick="void(0)"><img src="Styles/more-horiz.svg"></img> </button></div>
                 <div class="TaskName"><h3>Task 1</h3> <p>Time Left: 10:04:31</p></div>
-                <div class="PauseAndPlay"><h3>Pause/Play</h3> <p>Time Spent: 1:02:15</p></div>
+                <div class="PauseAndPlay">
+                    <button class="PausePlayButton" onclick="PausePlay()">
+                        <img id="playimg" src="Styles/play.svg"></img><img id= "pauseimg" src="Styles/pause.svg"></img> 
+                    </button>
+                    <p>Time Spent: 1:02:15</p>
+                </div>
                 <div class="CheckBtn"><button onclick="showCheck()"><span>&#9744</span><span id="checkmark">&#10008</span></button></div>
             </div>
 
-            <div class="Subtask"><p>subtask1</p><button onclick="showCheck()"><span>&#9744</span><span id="checkmark">&#10008</span></button></div>
-            <div class="Subtask"><p>subtask2</p><button onclick="showCheck()"><span>&#9744</span><span id="checkmark">&#10008</span></button></div>
+            <div class="Subtask"><p>subtask1</p></div>
+            <div class="Subtask"><p>subtask2</p></div>
         </div>
 
 

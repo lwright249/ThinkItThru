@@ -52,3 +52,15 @@ function showCheck() {
     x.style.visibility = "hidden";
   }
 }
+
+function PausePlay() {
+  var x = document.getElementById("playimg");
+  var y = document.getElementById("pauseimg");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+    y.style.display = "block";
+  } else {
+    x.style.display = "block";
+    y.style.display = "none";
+  }
+}
