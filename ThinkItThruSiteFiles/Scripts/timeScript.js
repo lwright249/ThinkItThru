@@ -33,3 +33,17 @@ class DateManipulation{
         return diffInDays;
     }
 }
+
+class Timer{
+    constructor(){
+        this.beginTime = new Date();
+        this.i = 0;
+    }
+    showTime(){
+        i++;
+        document.getElementById("timerDemo").innerHTML = i;
+    }
+
+}
+
+var x = setInterval(Timer.showTime(),1000);

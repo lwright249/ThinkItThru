@@ -100,9 +100,6 @@ class DailyObjectivesList{
                 day.indexList.forEach(index => {
                     let timeToWorkOnTask = this.objTaskList.taskList[index].getTimeRemaining();
                     timeToAdd = (newCeiling - oldCeiling) * (timeToWorkOnTask / timeToWorkInDay);
-                    //TODO add task to objectivesList
-                    //myTaskList.addTask(new Task("task five", 2, priority.HIGH, difficulty.HARD, 15, new Date(2024, 3, 26)));
-
 
                     console.log("current task: " + this.objTaskList.taskList[index].name);
                     let newObjective = new Objective(this.objTaskList.taskList[index].name, timeToAdd, index);
