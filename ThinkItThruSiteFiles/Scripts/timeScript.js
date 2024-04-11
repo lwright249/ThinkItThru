@@ -33,7 +33,7 @@ class DateManipulation{
         return diffInDays;
     }
 }
-
+/*nbknkjnkjnkjnj
 class Timer{
     constructor(){
         this.beginTime = new Date();
@@ -46,4 +46,4 @@ class Timer{
 
 }
 
-var x = setInterval(Timer.showTime(),1000);
+var x = setInterval(Timer.showTime(),1000);*/
