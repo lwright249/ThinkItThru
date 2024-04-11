@@ -43,3 +43,12 @@ function showLinks() {
     x.style.display = "block";
   }
 }
+
+function showCheck() {
+  var x = document.getElementById("checkmark");
+  if (x.style.visibility === "hidden") {
+    x.style.visibility = "visible";
+  } else {
+    x.style.visibility = "hidden";
+  }
+}
