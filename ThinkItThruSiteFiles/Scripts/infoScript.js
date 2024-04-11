@@ -184,6 +184,7 @@ class TaskList{
         this.taskList.forEach(
             t => {
                 console.log(t.getInfo());
+                //TODO: this should create html on the dashboard that displays it instead
             }
         )
     }
