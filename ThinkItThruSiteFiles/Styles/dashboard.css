@@ -186,5 +186,21 @@ h2{
 .Subtask p{
   text-align: left;
   font-size: 6vw;
-  padding-left: 10px;
+}
+
+.Subtask button{
+  background-color: none;
+  position: relative;
+  left: 25vw;
+  bottom: 10vw;
+}
+
+.Subtask span{
+  font-size: 15vw;
+}
+
+#subcheckmark{
+  position:relative;
+  right: 8vw;
+  visibility: show;
 }
