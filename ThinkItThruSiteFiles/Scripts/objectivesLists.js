@@ -17,9 +17,11 @@ class DailyObjectivesList{
     createDayList(){
         //this loop might break things
         for(let i = 0; i < this.objTaskList.taskList.length; i++){
+
             let currTaskDueDate = this.objTaskList.taskList[i].dueDate;
             let hasMatch = false;
-            console.log("task iteration: " + i + " due date: " + currTaskDueDate);
+
+            console.log("####task iteration: " + i + " due date: " + this.objTaskList.taskList[i].dueDate);
             //check if date of element matches Day that is already made
             this.dayList.forEach(dayElement => {
                 //console.log("curr task due date: " + currTaskDueDate);

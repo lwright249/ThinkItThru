@@ -148,12 +148,13 @@ class TaskList{
             console.log("NOT pushed to back");
             console.log("tasklist length: " + this.taskList.length);
 
-            let listLength = this.taskList.length;
+            //let listLength = this.taskList.length;
             let newTaskPushed = false;
             
             for(let i = 0; (i < this.taskList.length && !newTaskPushed); i++){
             console.log("iteration: " + i);
-            let iterationQueueScore = (this.taskList[i].getTimeRemaining() * this.taskList[i].taskPriority) / this.taskList[i].getDaysUntilDue();
+            let iterationQueueScore = this.taskList[i].getQueueScore();
+                console.log("comparing " + newTaskQueueScore + " to " + iterationQueueScore);
 
                 if(newTaskQueueScore > iterationQueueScore){
                     console.log("pushing in middle");
@@ -163,8 +164,8 @@ class TaskList{
             }
         }
         else{
-            console.log("list length: " + this.taskList.length);
             console.log("pushed to back");
+            console.log("list length: " + this.taskList.length);
             this.taskList.push(task);
         }
 
@@ -184,6 +185,7 @@ class TaskList{
         this.taskList.forEach(
             t => {
                 console.log(t.getInfo());
+                //TODO: this should create html on the dashboard that displays it instead
             }
         )
     }
