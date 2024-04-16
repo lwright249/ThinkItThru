@@ -20,7 +20,8 @@ myObj.printDayList();
 myObj.displayObjectivesList();
 
 
-console.log("days until assignment is due: " + DateManipulation.daysUntilDue(myTaskList.getTask(1).dueDate))
+console.log("days until assignment is due: " + DateManipulation.daysUntilDue(myTaskList.getTask(1).dueDate));
+console.log("DONE");
 /*
 
 const container = document.getElementById('myDiv');
@@ -112,9 +113,11 @@ function htmlForTask(Task, index){
   let html = "<div id = \"TaskBox" + index + "\">";
   html += "<div class=\"Task " + index + "\">";
   html += "<div class=\"EditTaskBtn\"><a href=\"javascript:void(0);\" class=\"icon\" onclick=\"showLinks()\"><img src=\"Styles/more-horiz.svg\"></img> </a></div>";
-  html += "<div class= TaskName><h3>" + Task.name + "</h3> <p>Time Left: " + Task.getTimeRemaining() + "</p></div>"; //TODO format date
-  html += "<div class=\"PauseAndPlay\"><h3>Pause/Play</h3> <p>Time Spent:"+ Task.timeWorked +"</p></div>";
+  html += "<div class= TaskName><h3>" + Task.name + "</h3> <p>Time Left: " + formatTimeFromMinutes(Task.getTimeRemaining()) + "</p></div>"; //TODO format date to work in seconds!
+  html += "<div class=\"PauseAndPlay\"><h3>Pause/Play</h3> <p>Time Spent:"+ formatTimeFromMinutes(Task.timeWorked) +"</p></div>";
   html += "<div class=\"CheckBtn\"><button><span>&#9744</span><span id=\"checkmark\">&#10008</span></button></div></div>"; //TODO connect this to Task somehow
+  html += "<div class=\"TimerBtn\"><button onclick = \"startTimer("+index+")\"><span id=\"timer\">timer</span></button></div></div>";
+  html += "<div id = \"TimerThing"+index+"\"<h3>no timer yet<h3> </div>"
   
   if(Task.hasSubTasks == true){
     if(Task.subtasksList == null){
@@ -131,5 +134,57 @@ function htmlForTask(Task, index){
   html += "</div>";
 
   return html;
+
+}
+
+function formatTimeFromMinutes(timeInMinutes){
+  let hours = Math.floor(timeInMinutes/60);
+  let remainingMinutes = timeInMinutes%60;
+  return hours + " : " + remainingMinutes;
+}
+
+function formatTimeFromSeconds(timeInSeconds){
+  let hours = Math.floor(timeInSeconds/(60*60));
+  let minutes = Math.floor(timeInSeconds/60)%60;
+  let remainingSeconds = timeInSeconds%(60);
+
+  let hoursString = hours.toString().padStart(2,'0');
+  let minutesString = minutes.toString().padStart(2,'0');
+  let secondsString = remainingSeconds.toString().padStart(2,'0');
+  return hoursString + " : " + minutesString + " : " + secondsString;
+
+  /*const hStr = h.toString().padStart(2, '0');
+  const mStr = m.toString().padStart(2, '0');
+  const sStr = s.toString().padStart(2, '0');
+
+  return `${hStr}:${mStr}:${sStr}`;
+  */
+}
+
+/*function startTimer(indexNum){
+  let timer = new Timer();
+  setInterval(timer.showTime(("TimerThing"+indexNum),1000));
+}*/
+
+function startTimer(indexNum) {
+  let timer = new Timer()
+  const myDiv = document.getElementById("TimerThing"+indexNum);
+
+  const timerUpdate = setInterval(() => {
+    myDiv.textContent = timer.showTime();
+  }, 1000);
+}
+
+class Timer{
+  constructor(){
+      this.beginTime = new Date();
+      this.i = 0;
+  }
+  showTime(){
+    //console.log("element: " + document.getElementById(elementId).innerHTML);
+      this.i++;
+      return formatTimeFromSeconds(this.i);
+      //document.getElementById(elementId).innerHTML = this.i;
+  }
 
 }
