@@ -33,17 +33,17 @@ class DateManipulation{
         return diffInDays;
     }
 }
-/*nbknkjnkjnkjnj
+/*
 class Timer{
     constructor(){
         this.beginTime = new Date();
         this.i = 0;
     }
-    showTime(){
+    showTime(elementId){
         i++;
-        document.getElementById("timerDemo").innerHTML = i;
+        document.getElementById(elementId).innerHTML = i;
     }
 
 }
-
-var x = setInterval(Timer.showTime(),1000);*/
+*/
+//var x = setInterval(Timer.showTime(),1000);
