@@ -1,0 +1,33 @@
+#GameSection{
+    display: grid;
+    grid-template-areas:
+    "oneone onetwo onethree onefour"
+    "twoone twotwo twothree twofour"
+    "threeone threetwo threethree threefour"
+    "fourone fourtwo fourthree fourfour";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+#oneone{ 
+    grid-area: oneone;
+    background-color: blue;
+}
+#onetwo{ 
+    grid-area: onetwo;
+}
+#onethree{ grid-area: onethree;}
+#onefour{ grid-area: onefour;}
+#twoone{ grid-area: twoone;}
+#twotwo{ grid-area: twotwo;}
+#twothree{ grid-area: twothree;}
+#twofour{ grid-area: twofour;}
+#threeone{ grid-area: threeone;}
+#threetwo{ grid-area: threetwo;}
+#threethree{ grid-area: threethree;}
+#threefour{ grid-area: threefour;}
+#fourone{ grid-area: fourone;}
+#fourtwo{ grid-area: fourtwo;}
+#fourthree{ grid-area: fourthree;}
+#fourfour{ grid-area: fourfour;}
