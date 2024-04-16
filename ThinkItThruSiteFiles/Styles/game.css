@@ -10,9 +10,12 @@
     gap: 10px;
 }
 
+.gridsection{
+    background-color: blue;
+}
+
 #oneone{ 
     grid-area: oneone;
-    background-color: blue;
 }
 #onetwo{ 
     grid-area: onetwo;
