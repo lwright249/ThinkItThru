@@ -20,7 +20,8 @@ myObj.printDayList();
 myObj.displayObjectivesList();
 
 
-console.log("days until assignment is due: " + DateManipulation.daysUntilDue(myTaskList.getTask(1).dueDate))
+console.log("days until assignment is due: " + DateManipulation.daysUntilDue(myTaskList.getTask(1).dueDate));
+console.log("DONE");
 /*
 
 const container = document.getElementById('myDiv');
@@ -112,8 +113,8 @@ function htmlForTask(Task, index){
   let html = "<div id = \"TaskBox" + index + "\">";
   html += "<div class=\"Task " + index + "\">";
   html += "<div class=\"EditTaskBtn\"><a href=\"javascript:void(0);\" class=\"icon\" onclick=\"showLinks()\"><img src=\"Styles/more-horiz.svg\"></img> </a></div>";
-  html += "<div class= TaskName><h3>" + Task.name + "</h3> <p>Time Left: " + Task.getTimeRemaining() + "</p></div>"; //TODO format date
-  html += "<div class=\"PauseAndPlay\"><h3>Pause/Play</h3> <p>Time Spent:"+ Task.timeWorked +"</p></div>";
+  html += "<div class= TaskName><h3>" + Task.name + "</h3> <p>Time Left: " + formatTime(Task.getTimeRemaining()) + "</p></div>"; //TODO format date
+  html += "<div class=\"PauseAndPlay\"><h3>Pause/Play</h3> <p>Time Spent:"+ formatTime(Task.timeWorked) +"</p></div>";
   html += "<div class=\"CheckBtn\"><button><span>&#9744</span><span id=\"checkmark\">&#10008</span></button></div></div>"; //TODO connect this to Task somehow
   
   if(Task.hasSubTasks == true){
@@ -132,4 +133,10 @@ function htmlForTask(Task, index){
 
   return html;
 
+}
+
+function formatTime(timeInMinutes){
+  let hours = timeInMinutes/60;
+  let remainingMinutes = timeInMinutes%60;
+  return hours + " : " + remainingMinutes;
 }
