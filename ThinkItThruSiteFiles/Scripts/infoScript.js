@@ -4,6 +4,23 @@ const priority = {
     HIGH: 4
 }
 
+class User{
+    //constructor for new and returning users, defaults are for calling for new users
+    constructor(firstName, lastName, picId, major, xp = 0, streak = 0, xpGardenMultiplier = 1, userTasks = new TaskList(), gardenStr = "aaaaaaaaaaaaaaaa", dailyObjectives = null, weeklyObjectives = null){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.picId = picId;
+        this.major = major;
+        this.xp = xp;
+        this.streak = streak;
+        this.xpGardenMultiplier = xpGardenMultiplier;
+        this.userTasks = userTasks;
+        this.gardenStr = gardenStr;
+        this.dailyObjectives = dailyObjectives;
+        this.weeklyObjectives = weeklyObjectives;
+    }
+}
+
 class BasicTask{
     constructor(name, timeReq){
         this.name = name;
