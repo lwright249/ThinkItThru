@@ -101,8 +101,8 @@ class Garden{
         }
     }
 
+    //updates gardenStr in this Garden object and in the user's object, then calls updateUserXPGardenMultiplier
     updateUser(itemCost){
-        //console.log(this.selectedTile);
         if(this.selectedTile == -1){
             console.log("ERROR UPDATING USER");
             return;
@@ -120,7 +120,57 @@ class Garden{
         this.user.gardenStr = newString;
 
         console.log(this.user.gardenStr);
+        console.log("attempting to update xp garden mult");
 
+        this.updateUserXPGardenMultiplier();
+
+    }
+
+    updateUserXPGardenMultiplier(){
+        let newMultiplier = 1;
+
+        /*this.gardenStr.forEach(char => {
+            switch (char) {
+                case 'a':
+                    newMultiplier += .05;
+                    break;
+                case 'b':
+                    newMultiplier += .05;
+                    break;
+                case 'c':
+                    newMultiplier += .05;
+                    break;
+                case 'd':
+                    newMultiplier += .05;
+                    break;
+                default:
+                    break;
+            }
+        });*/
+
+        for(let i = 0; i < this.gardenStr.length; i++){
+            let char = this.gardenStr.charAt(i);
+
+            switch (char) {
+                case 'b':
+                    newMultiplier += .05;
+                    break;
+                case 'c':
+                    newMultiplier += .10;
+                    break;
+                case 'd':
+                    newMultiplier += .15;
+                    break;
+                case 'e':
+                    newMultiplier += .25;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        console.log("new multiplier: " + newMultiplier);
+        this.user.xpGardenMultiplier = newMultiplier;
     }
 
     updateScreen(){
