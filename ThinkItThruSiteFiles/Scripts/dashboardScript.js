@@ -45,6 +45,7 @@ function showLinks() {
     x.style.display = "block";
   }
 }
+
 function showEditLinks() {
   var x = document.getElementById("edit_task");
   if (x.style.display === "block") {

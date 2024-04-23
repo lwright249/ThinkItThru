@@ -107,7 +107,7 @@ h2{
 
 /*Task Section*/
 .Task{
-  background-color: lightgray;
+  background-color: red;
   padding: 5px;
   margin-bottom: 20px;
   display: grid;
@@ -121,7 +121,7 @@ h2{
 }
 
 .Task div{
-  background-color: green;
+
 }
 
 .EditTaskBtn button{
@@ -130,6 +130,7 @@ h2{
   display:block;
   width: 10vw;
   border: none;
+  border-radius: 5px;
 }
 
 .EditTaskBtn button img{
@@ -167,7 +168,7 @@ h2{
 
 /*Subtask Section*/
 .Subtask{
-  background-color: blue;
+  background-color: rgb(126, 179, 203);
   margin-bottom: 5px;
 }
 
@@ -176,8 +177,8 @@ h2{
   font-size: 6vw;
 }
 
-
 .Subtask input{
   width: 10vw;
   height: 10vw;
 }
+
