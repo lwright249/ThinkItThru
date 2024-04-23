@@ -15,12 +15,13 @@ class User{
         this.streak = streak;
         this.xpGardenMultiplier = xpGardenMultiplier;
         this.userTasks = userTasks;
-        this.gardenStr = gardenStr;
+        this.gardenStr = gardenStr; //TODO create Garden object from this
         this.dailyObjectives = dailyObjectives;
         this.weeklyObjectives = weeklyObjectives;
     }
 }
 
+//parent class for Task and SubTask
 class BasicTask{
     constructor(name, timeReq){
         this.name = name;
@@ -84,7 +85,7 @@ class Task extends BasicTask{ //maybe i remove basictask and hope noone notices,
     }
 
     update(){
-        //TODO wtf do i do here
+        //TODO remove
     }
 
     startTime(){
