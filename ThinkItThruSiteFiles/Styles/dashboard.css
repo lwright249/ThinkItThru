@@ -176,19 +176,11 @@ h2{
   font-size: 6vw;
 }
 
-.Subtask button{
-  background-color: none;
-  position: relative;
-  left: 25vw;
-  bottom: 10vw;
+.Subtask .checkbox_container{
+
 }
 
-.Subtask span{
-  font-size: 15vw;
-}
-
-#subcheckmark{
-  position:relative;
-  right: 8vw;
-  visibility: show;
+.Subtask input{
+  width: 10vw;
+  height: 10vw;
 }
