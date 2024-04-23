@@ -67,12 +67,12 @@ body{
     padding-top: 10px;
 }
 
-.StoreSection{
-
+.StoreSection p{
+  font-size: 5vw;
 }
 
 .Store_Img{
-    width: 8vw;
+    width: 12vw;
 }
 
 #Garden{
@@ -92,17 +92,24 @@ body{
 
 .GardenSection{
     background-color: blue;
-    height:20vw;
+    height: 20vw;
     text-align: center;
-    border-radius: 2px;
+    border-radius: 5px;
 }
 .GardenSection p{
     margin: 2px;
     text-align: center;
+    font-size: 4vw;
+}
+
+.GardenSection button{
+  height: 65%;
+  width: 65%;
 }
 
 .Garden_Img{
-    width: 8vw;
+  height: 90%;
+  width: 90%;
 }
 
 #garden_oneone{ grid-area: oneone;}
