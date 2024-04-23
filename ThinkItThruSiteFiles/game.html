@@ -9,6 +9,8 @@
 </head>
 
 <body>
+    <script src="Scripts/infoScript.js"></script>
+    <script src="Scripts/gardenScript.js"></script>
     <script src="Scripts/game.js"></script>
 
     <header>
@@ -35,75 +37,75 @@
     <div id="GameStore">
 
         <div id="store_1" class="StoreSection">
-                <button id="store_button_1"> <img src="Styles/test_pencil.svg" id="store_img_1" class="Store_Img"></img> </button>
+                <button id="store_button_1"> <img src="Styles/test_pencil.svg" id="store_img_1" class="Store_Img" onclick="updateStoreItem(myGarden, 'b')"></img> </button>
                 <p id="item_label_1">label</p>
         </div>
 
         <div id="store_2" class="StoreSection">
-                <button id="store_button_2"> <img src="Styles/test_pencil.svg" id="store_img_2" class="Store_Img"></img> </button>
+                <button id="store_button_2"> <img src="Styles/test_pencil.svg" id="store_img_2" class="Store_Img" onclick="updateStoreItem(myGarden, 'c')"></img> </button>
                 <p id="item_label_2">label</p>
         </div>
 
         <div id="store_3" class="StoreSection">
-                <button id="store_button_3"> <img src="Styles/test_pencil.svg" id="store_img_3" class="Store_Img"></img> </button>
+                <button id="store_button_3"> <img src="Styles/test_pencil.svg" id="store_img_3" class="Store_Img" onclick="updateStoreItem(myGarden, 'd')"></img> </button>
                 <p id="item_label_3">label</p>
         </div>
 
         <div id="store_4" class="StoreSection">
-                <button id="store_button_4"> <img src="Styles/test_pencil.svg" id="store_img_4" class="Store_Img"></img> </button>
+                <button id="store_button_4"> <img src="Styles/test_pencil.svg" id="store_img_4" class="Store_Img" onclick="updateStoreItem(myGarden, 'e')"></img> </button>
                 <p id="item_label_4">label</p>
         </div>
 
     </div>
 
     <div id="Garden">
-        <div id= "garden_1_1" class="GardenSection"> <p>one one</p>
-                <button><img src="Styles/test_pencil.svg" id="garden_img_1_1" class="Garden_Img"></img></button></div>
+        <div id= "garden_0_0" class="GardenSection"> <p>one one</p>
+                <button><img src="Styles/test_pencil.svg" id="garden_img_1_1" class="Garden_Img" onclick="beginPurchase(myGarden, 0)"></img></button></div>
         
-        <div id= "garden_1_2" class="GardenSection"> <p>one two</p>
-                <button><img src="Styles/test_pencil.svg" id="garden_img_1_2" class="Garden_Img"></img></button></div>
+        <div id= "garden_0_1" class="GardenSection"> <p>one two</p>
+                <button><img src="Styles/test_pencil.svg" id="garden_img_1_2" class="Garden_Img" onclick="beginPurchase(myGarden, 1)"></img></button></div>
         
-        <div id= "garden_1_3" class="GardenSection"> <p>one three</p>
-                <button><img src="Styles/test_pencil.svg" id="garden_img_1_3" class="Garden_Img"></img></button></div>
+        <div id= "garden_0_2" class="GardenSection"> <p>one three</p>
+                <button><img src="Styles/test_pencil.svg" id="garden_img_1_3" class="Garden_Img" onclick="beginPurchase(myGarden, 2)"></img></button></div>
         
-        <div id= "garden_1_4" class="GardenSection"> <p>one four</p>
-                <button><img src="Styles/test_pencil.svg" id="garden_img_1_4" class="Garden_Img"></img></button></div>
+        <div id= "garden_0_3" class="GardenSection"> <p>one four</p>
+                <button><img src="Styles/test_pencil.svg" id="garden_img_1_4" class="Garden_Img" onclick="beginPurchase(myGarden, 3)"></img></button></div>
         
-        <div id= "garden_2_1" class="GardenSection"> <p>two one</p>
-                <button><img src="Styles/test_pencil.svg" id="garden_img_2_1" class="Garden_Img"></img></button></div>
+        <div id= "garden_1_0" class="GardenSection"> <p>two one</p>
+                <button><img src="Styles/test_pencil.svg" id="garden_img_2_1" class="Garden_Img" onclick="beginPurchase(myGarden, 4)"></img></button></div>
         
-        <div id= "garden_2_2" class="GardenSection"> <p>two two</p>
-                <button><img src="Styles/test_pencil.svg" id="garden_img_2_2" class="Garden_Img"></img></button></div>
+        <div id= "garden_1_1" class="GardenSection"> <p>two two</p>
+                <button><img src="Styles/test_pencil.svg" id="garden_img_2_2" class="Garden_Img" onclick="beginPurchase(myGarden, 5)"></img></button></div>
         
-        <div id= "garden_2_3" class="GardenSection"> <p>two three</p>
-                <button><img src="Styles/test_pencil.svg" id="garden_img_2_3" class="Garden_Img"></img></button></div>
+        <div id= "garden_1_2" class="GardenSection"> <p>two three</p>
+                <button><img src="Styles/test_pencil.svg" id="garden_img_2_3" class="Garden_Img" onclick="beginPurchase(myGarden, 6)"></img></button></div>
         
-        <div id= "garden_2_4" class="GardenSection"> <p>two four</p>
-                <button><img src="Styles/test_pencil.svg" id="garden_img_2_4" class="Garden_Img"></img></button></div>
+        <div id= "garden_1_3" class="GardenSection"> <p>two four</p>
+                <button><img src="Styles/test_pencil.svg" id="garden_img_2_4" class="Garden_Img" onclick="beginPurchase(myGarden, 7)"></img></button></div>
         
-        <div id= "garden_3_1" class="GardenSection"> <p>three one</p>
-                <button><img src="Styles/test_pencil.svg" id="garden_img_3_1" class="Garden_Img"></img></button></div>
+        <div id= "garden_2_0" class="GardenSection"> <p>three one</p>
+                <button><img src="Styles/test_pencil.svg" id="garden_img_3_1" class="Garden_Img" onclick="beginPurchase(myGarden, 8)"></img></button></div>
         
-        <div id= "garden_3_2" class="GardenSection"> <p>three two</p>
-                <button><img src="Styles/test_pencil.svg" id="garden_img_3_2" class="Garden_Img"></img></button></div>
+        <div id= "garden_2_1" class="GardenSection"> <p>three two</p>
+                <button><img src="Styles/test_pencil.svg" id="garden_img_3_2" class="Garden_Img" onclick="beginPurchase(myGarden, 9)"></img></button></div>
         
-        <div id= "garden_3_3" class="GardenSection"> <p>three three</p>
-                <button><img src="Styles/test_pencil.svg" id="garden_img_3_3" class="Garden_Img"></img></button></div>
+        <div id= "garden_2_2" class="GardenSection"> <p>three three</p>
+                <button><img src="Styles/test_pencil.svg" id="garden_img_3_3" class="Garden_Img" onclick="beginPurchase(myGarden, 10)"></img></button></div>
         
-        <div id= "garden_3_4" class="GardenSection"> <p>three four</p>
-                <button><img src="Styles/test_pencil.svg" id="garden_img_3_4" class="Garden_Img"></img></button></div>
+        <div id= "garden_2_3" class="GardenSection"> <p>three four</p>
+                <button><img src="Styles/test_pencil.svg" id="garden_img_3_4" class="Garden_Img" onclick="beginPurchase(myGarden, 11)"></img></button></div>
         
-        <div id= "garden_4_1" class="GardenSection"> <p>four one</p>
-                <button><img src="Styles/test_pencil.svg" id="garden_img_4_1" class="Garden_Img"></img></button></div>
+        <div id= "garden_3_0" class="GardenSection"> <p>four one</p>
+                <button><img src="Styles/test_pencil.svg" id="garden_img_4_1" class="Garden_Img" onclick="beginPurchase(myGarden, 12)"></img></button></div>
         
-        <div id= "garden_4_2" class="GardenSection"> <p>four two</p>
-                <button><img src="Styles/test_pencil.svg" id="garden_img_4_2" class="Garden_Img"></img></button></div>
+        <div id= "garden_3_1" class="GardenSection"> <p>four two</p>
+                <button><img src="Styles/test_pencil.svg" id="garden_img_4_2" class="Garden_Img" onclick="beginPurchase(myGarden, 13)"></img></button></div>
         
-        <div id= "garden_4_3" class="GardenSection"> <p>four three</p>
-                <button><img src="Styles/test_pencil.svg" id="garden_img_4_3" class="Garden_Img"></img></button></div>
+        <div id= "garden_3_2" class="GardenSection"> <p>four three</p>
+                <button><img src="Styles/test_pencil.svg" id="garden_img_4_3" class="Garden_Img" onclick="beginPurchase(myGarden, 14)"></img></button></div>
         
-        <div id= "garden_4_4" class="GardenSection"> <p>four four</p>
-                <button><img src="Styles/test_pencil.svg" id="garden_img_4_4" class="Garden_Img"></img></button></div>
+        <div id= "garden_3_3" class="GardenSection"> <p>four four</p>
+                <button><img src="Styles/test_pencil.svg" id="garden_img_4_4" class="Garden_Img" onclick="beginPurchase(myGarden, 15)"></img></button></div>
 
     </div>
 

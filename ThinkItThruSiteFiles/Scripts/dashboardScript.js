@@ -82,21 +82,10 @@ node.innerHTML('<p>some dynamic html</p>');*/
   var dashboardTasks = document.getElementById("TaskBoxSection");
   let html = "";
 
-  console.log(dashboardTasks);
-
-  /*myTaskList.taskList.forEach(Task => {
-    console.log("ADDING TO DASHBOARD: " + Task.name);
-    html += "<div class=\"TaskBox\"> <div class=\"Task\"><div class=\"EditTaskBtn\"><a href=\"javascript:void(0);\" class=\"icon\" onclick=\"showLinks()\"><img src=\"Styles/more-horiz.svg\"></img> </a></div><div class=\"TaskName\"><h3>Task 1</h3> <p>Time Left: 10:04:31</p></div><div class=\"PauseAndPlay\"><h3>Pause/Play</h3> <p>Time Spent: 1:02:15</p></div><div class=\"CheckBtn\"><button><span>&#9744</span><span id=\"checkmark\">&#10008</span></button></div>\</div>\<div class=\"Subtask\"><p>subtask1</p></div><div class=\"Subtask\">subtask2</div></div>"
-  } );
-*/
   for(let i = 0; i < myTaskList.taskList.length; i++){
     html += htmlForTask(myTaskList.taskList[i], i);
   }
 
-  //console.log(html);
-
-  //dashboardTasks.innerHTML = ('<p> hi </p>');
-  //console.log(dashboardTasks.innerHTML);
   dashboardTasks.innerHTML = html;  
 }
 
