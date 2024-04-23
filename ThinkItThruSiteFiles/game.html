@@ -9,7 +9,28 @@
 </head>
 
 <body>
-    <script scr="Scripts/game.js"></script>
+    <script src="Scripts/game.js"></script>
+
+    <header>
+        <div class="Topnav">
+
+            <h1 class="DashTitle">Mind Your Garden!</h1>
+    
+            <!-- "Hamburger menu, click to toggle the navigation links -->
+            <button href="javascript:void(0);" class="icon" onclick="showLinks()">
+                <span>&#9776</span>
+            </button>
+
+        </div>
+
+        <!-- Navigation links (hidden by default) -->
+        <nav id="LinkContainer">
+            <a href="#CreateTask" class="navlinks">Dashboard</a>
+            <a href="#Settings" class="navlinks">Settings</a>
+            <a href="#SignOut" class="navlinks">Sign Out</a>
+        </nav>
+
+    </header>
 
     <div id="GameStore">
 
@@ -32,7 +53,7 @@
                 <button id="store_button_4"> <img src="Styles/test_pencil.svg" id="store_img_4" class="Store_Img"></img> </button>
                 <p id="item_label_4">label</p>
         </div>
-        
+
     </div>
 
     <div id="Garden">
