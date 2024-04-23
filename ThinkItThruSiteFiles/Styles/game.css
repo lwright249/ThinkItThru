@@ -1,4 +1,17 @@
-#GameSection{
+#GameStore{
+    display: flex;
+    background-color: lightblue;
+    justify-content: space-around;
+}
+
+.StoreSection{
+}
+
+.Store_Img{
+    width: 8vw;
+}
+
+#Garden{
     display: grid;
     grid-template-areas:
     "oneone onetwo onethree onefour"
@@ -7,30 +20,36 @@
     "fourone fourtwo fourthree fourfour";
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 1px;
+    gap: 3px;
 }
 
-.gridsection{
+.GardenSection{
     background-color: blue;
+    height:20vw;
+    text-align: center;
+}
+.GardenSection p{
+    margin: 2px;
+    text-align: center;
 }
 
-#oneone{ 
-    grid-area: oneone;
+.Garden_Img{
+    width: 8vw;
 }
-#onetwo{ 
-    grid-area: onetwo;
-}
-#onethree{ grid-area: onethree;}
-#onefour{ grid-area: onefour;}
-#twoone{ grid-area: twoone;}
-#twotwo{ grid-area: twotwo;}
-#twothree{ grid-area: twothree;}
-#twofour{ grid-area: twofour;}
-#threeone{ grid-area: threeone;}
-#threetwo{ grid-area: threetwo;}
-#threethree{ grid-area: threethree;}
-#threefour{ grid-area: threefour;}
-#fourone{ grid-area: fourone;}
-#fourtwo{ grid-area: fourtwo;}
-#fourthree{ grid-area: fourthree;}
-#fourfour{ grid-area: fourfour;}
+
+#garden_oneone{ grid-area: oneone;}
+#garden_onetwo{ grid-area: onetwo;}
+#garden_onethree{ grid-area: onethree;}
+#garden_onefour{ grid-area: onefour;}
+#garden_twoone{ grid-area: twoone;}
+#garden_twotwo{ grid-area: twotwo;}
+#garden_twothree{ grid-area: twothree;}
+#garden_twofour{ grid-area: twofour;}
+#garden_threeone{ grid-area: threeone;}
+#garden_threetwo{ grid-area: threetwo;}
+#garden_threethree{ grid-area: threethree;}
+#garden_threefour{ grid-area: threefour;}
+#garden_fourone{ grid-area: fourone;}
+#garden_fourtwo{ grid-area: fourtwo;}
+#garden_fourthree{ grid-area: fourthree;}
+#garden_fourfour{ grid-area: fourfour;}
