@@ -45,6 +45,14 @@ function showLinks() {
     x.style.display = "block";
   }
 }
+function showEditLinks() {
+  var x = document.getElementById("edit_task");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
 
 function showCheck() {
   var x = document.getElementById("checkmark");

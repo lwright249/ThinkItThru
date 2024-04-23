@@ -96,8 +96,16 @@ h2{
   padding: 5px;
 }
 
+.TaskBox #edit_task{
+  display: none;
+}
 
-/*Task/Subtask Section*/
+.TaskBox a{
+  display: block;
+}
+
+
+/*Task Section*/
 .Task{
   background-color: lightgray;
   padding: 5px;
@@ -106,10 +114,9 @@ h2{
 
   grid-template-areas:
   "EditButton . ."
-  "TaskName . PausePlay"
-  ". . CheckBtn";
+  "TaskName . PausePlay";
   grid-template-columns: 1fr .3fr 1fr;
-  grid-template-rows: auto 1fr 1fr;
+  grid-template-rows: auto 1fr;
   gap: 10px;
 }
 
@@ -156,28 +163,9 @@ h2{
   height: 15vw;
 }
 
-.CheckBtn{
-  grid-area: CheckBtn;
-  padding-top: 20%;
-  padding-left: 20%;
-}
-.CheckBtn button{
-  background: none;
-  border:none;
-}
-
-.CheckBtn span{
-  font-size: 12vw;
-}
-
-#checkmark{
-  position:relative;
-  right: 10vw;
-  visibility: hidden;
-}
 
 
-
+/*Subtask Section*/
 .Subtask{
   background-color: blue;
   margin-bottom: 5px;
