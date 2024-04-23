@@ -1,3 +1,9 @@
+let newUser = new User("John", "Doe", 13123123, "CSCI", 5000, 1.1, 1, new TaskList(), "aaaaaaaaaaaaaaaa");
+newUser.userTasks.addTask(new Task("task one", 200, priority.HIGH, new Date(2024, 4, 5)));
+newUser.userTasks.addTask(new Task("task two", 200, priority.MED, new Date(2024, 4, 6)));
+newUser.userTasks.addTask(new Task("task three", 200, priority.LOW, new Date(2024, 4, 4)));
+
+/*
 console.log("Hello World!");
 let myTaskList = new TaskList();
 myTaskList.addTask(new Task("task one", 200, priority.HIGH, new Date(2024, 3, 5)));
@@ -12,15 +18,16 @@ console.log("done");
 let taskToChange = myTaskList.getTask(1);
 taskToChange.name = "CHANGED";
 
-myTaskList.logTasks();
+myTaskList.logTasks();generateTasks
 generateTasks();
-
-let myObj = new DailyObjectivesList(myTaskList);
+*/
+let myObj = new DailyObjectivesList(newUser.userTasks);
 myObj.printDayList();
 myObj.displayObjectivesList();
+generateTasks(newUser);
 
 
-console.log("days until assignment is due: " + DateManipulation.daysUntilDue(myTaskList.getTask(1).dueDate));
+console.log("days until assignment is due: " + DateManipulation.daysUntilDue(newUser.userTasks.getTask(0).dueDate));
 console.log("DONE");
 /*
 
@@ -39,14 +46,6 @@ container.appendChild(numberList);*/
 
 function showLinks() {
   var x = document.getElementById("LinkContainer");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
-}
-function showEditLinks() {
-  var x = document.getElementById("edit_task");
   if (x.style.display === "block") {
     x.style.display = "none";
   } else {
@@ -75,15 +74,15 @@ function PausePlay() {
   }
 }
 
-function generateTasks() {
+function generateTasks(user) {
   /*var node = document.getElementById('node-id');
 node.innerHTML('<p>some dynamic html</p>');*/
 
   var dashboardTasks = document.getElementById("TaskBoxSection");
   let html = "";
 
-  for(let i = 0; i < myTaskList.taskList.length; i++){
-    html += htmlForTask(myTaskList.taskList[i], i);
+  for(let i = 0; i < user.userTasks.taskList.length; i++){
+    html += htmlForTask(user.userTasks.taskList[i], i);
   }
 
   dashboardTasks.innerHTML = html;  
@@ -114,6 +113,7 @@ function htmlForTask(Task, index){
   html += "<div class=\"PauseAndPlay\"><h3>Pause/Play</h3> <p>Time Spent:"+ formatTimeFromMinutes(Task.timeWorked) +"</p></div>";
   html += "<div class=\"CheckBtn\"><button><span>&#9744</span><span id=\"checkmark\">&#10008</span></button></div></div>"; //TODO connect this to Task somehow
   html += "<div class=\"TimerBtn\"><button onclick = \"startTimer("+index+")\"><span id=\"timer\">timer</span></button></div></div>";
+  html += "<div class=\"TimerBtn\"><button onclick = \"stopTimer("+index+")\"><span id=\"timer\">stop</span></button></div></div>";
   html += "<div id = \"TimerThing"+index+"\"<h3>no timer yet<h3> </div>"
   
   if(Task.hasSubTasks == true){
@@ -163,25 +163,47 @@ function formatTimeFromSeconds(timeInSeconds){
   setInterval(timer.showTime(("TimerThing"+indexNum),1000));
 }*/
 
+//called by dashboard html, starts Timer and changes user's currTimer
 function startTimer(indexNum) {
-  let timer = new Timer()
+  let ownerTask = newUser.userTasks.getTask(indexNum);
+  newUser.currTimer = new Timer(ownerTask);
   const myDiv = document.getElementById("TimerThing"+indexNum);
 
   const timerUpdate = setInterval(() => {
-    myDiv.textContent = timer.showTime();
+    myDiv.textContent = newUser.currTimer.showTime();
   }, 1000);
 }
 
+//stops currTimer with stopTime();
+function stopTimer(){
+  newUser.currTimer.stopTime();
+}
+
+//TODO why am i created NEW timers on startTimer
 class Timer{
-  constructor(){
+  constructor(ownerTask){
       this.beginTime = new Date();
       this.i = 0;
+      this.ownerTask = ownerTask;
   }
+  //increments and returns time
   showTime(){
     //console.log("element: " + document.getElementById(elementId).innerHTML);
       this.i++;
       return formatTimeFromSeconds(this.i);
       //document.getElementById(elementId).innerHTML = this.i;
+  }
+
+  //stops time and updates ownerTask's time worked
+  stopTime(){
+    /* 
+    TODO: 
+    */
+    let timeworkedInMinutes = Math.floor(this.i);
+    this.ownerTask.timeWorked += timeworkedInMinutes;
+    generateTasks(newUser);
+    this.i = 0;
+
   }
 
 }
