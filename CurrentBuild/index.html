@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThinkItThru!</title>
+    <link href="Styles/style.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="section">
+        <div class="ui segment grey signup-form">
+            <h1 class="categoryHeader">ThinkItThru!</h1>
+            <div class="ui form">
+                <div class="ui stacked segment">
+
+                    <div class="ui error message visible">
+                        Error
+                    </div>
+
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="mail icon"></i>
+                            <input type="email" placeholder="Email" id="email"/>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" placeholder="Password" id="password"/>
+                        </div>
+                    </div>
+                    <button class="ui button grey fluid" id="signup-btn">CREATE ACCOUNT</button>
+                </div>
+            </div>
+            <div class="ui message small">Already have an account? <a>Log In!</a></div>
+        </div>
+    </div>
+    <script src="Scripts/firebase.js" type="module"></script>
+    <script src="Scripts/app.js" type="module"></script>
+</body>
+</html>
