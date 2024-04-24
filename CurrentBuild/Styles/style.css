@@ -10,6 +10,11 @@
     min-width: 300px;
     text-align: center;
     display: none;
+    text-align: center;
+}
+#login-form {
+    min-width: 400px;
+    text-align: center;
 }
 
 #user-profile {

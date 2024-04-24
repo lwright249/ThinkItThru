@@ -105,24 +105,33 @@ loginBtn.addEventListener("click", loginButtonPressed);
 
 const formatErrorMessage = (errorCode, action) => {
     let message = "";
-    if(action === "signup") {
-        if(errorCode === "auth/invalid-email" || errorCode === "auth/missing-email") {
-            message = "Please enter a valid email."
-        } else if (errorCode === "auth/missing-password" || errorCode === "auth/weak-password") {
-            message = "Password must be at least 6 characters.";
-        } else if (errorCode === "auth/email-already-in-use") {
-            message = "Email is already taken.";
-        } else {
-            message = "Something went wrong.";
+    if (action === "signup") {
+        switch (errorCode) {
+            case "auth/invalid-email":
+            case "auth/missing-email":
+                message = "Please enter a valid email.";
+                break;
+            case "auth/weak-password":
+                message = "Password must be at least 6 characters.";
+                break;
+            case "auth/email-already-in-use":
+                message = "Email is already taken.";
+                break;
+            default:
+                message = "Something went wrong.";
+                break;
         }
-        return message;
     } else if (action === "login") {
-        if (errorCode === "auth/invalid-email" || 
-        errorCode === "auth/invalid-password"
-    ){
-        message = "Email or Password is incorrect.";
-    } else if (errorCode === "auth/user-not-found"){
-        message = "Our system was unable to verify your email or password";
-    };
-    };
-    };
+        switch (errorCode) {
+            case "auth/invalid-email":
+            case "auth/invalid-password":
+            case "auth/user-not-found":
+                message = "Email or Password is incorrect.";
+                break;
+            default:
+                message = "An error occurred during login.";
+                break;
+        }
+    }
+    return message;
+};
