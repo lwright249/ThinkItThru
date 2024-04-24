@@ -26,11 +26,12 @@ const signUpButtonPressed = async (e) => {
         console.log(userCredential);
 
         UIuserEmail.innerHTML = userCredential.user.email;
-        
+
         signUpFormView.style.display = "none";
         userProfileView.style.display = "block";
     } catch (error) {
-        console.log(error.code);
+        console.log("Error object: ", error);
+        console.log("Error code: ", error.code);
         UIErrorMessage.innerHTML = formatErrorMessage(error.code);
         UIErrorMessage.classList.add("visible");
     }
@@ -46,6 +47,8 @@ const formatErrorMessage = (errorCode) => {
         message = "Password must be at least 6 characters.";
     } else if (errorCode === "auth/email-already-in-use") {
         message = "Email is already taken.";
+    } else {
+        message = "Something went wrong.";
     }
     return message;
 };
