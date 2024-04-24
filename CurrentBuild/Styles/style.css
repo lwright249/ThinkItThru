@@ -16,6 +16,6 @@
     display: none;
 }
 
-.signup-form {
-    display: block;
+#user-email {
+    margin-bottom: 15px;
 }
