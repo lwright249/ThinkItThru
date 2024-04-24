@@ -25,25 +25,26 @@
             </div>
         </div>
         <!------------ LOG IN FORM ------------->
-        <div class="ui segment login-form">
+        <div class="ui segment" id="login-form">
             <h1 class="categoryHeader">ThinkItThru!</h1>
             <form class="ui form">
                 <div class="ui stacked segment">
+                    <div class="ui error message" id="login-error-message"></div>
                     <!---- Email ---->
                     <div class="field">
                         <div class="ui left icon input">
                             <i class="mail icon"></i>
-                            <input type="email" placeholder="Email" />
+                            <input type="email" placeholder="Email" id="login-email" />
                         </div>
                     </div>
                     <!---- Password ---->
                     <div class="field">
                         <div class="ui left icon input">
                             <i class="lock icon"></i>
-                            <input type="password" placeholder="Password" />
+                            <input type="password" placeholder="Password" id="login-password" />
                         </div>
                     </div>
-                    <button class="ui button grey fluid">LOG IN</button>
+                    <button class="ui button grey fluid" id="login-btn">LOG IN</button>
                 </div>
             </form>
             <div class="ui message small">Need an acount? <a>Sign up!</a></div>
