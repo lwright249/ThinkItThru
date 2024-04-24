@@ -1,4 +1,4 @@
-.section {
+#main-view {
     height:100vh;
     background-color: #e2ae67;
     display:flex;
@@ -9,8 +9,8 @@
 .signup-form {
     min-width: 300px;
     text-align: center;
+    display: none;
 }
-
 
 #user-profile {
     display: none;

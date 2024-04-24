@@ -8,8 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="section">
-
+    <section class="ui segment loading" id="main-view">
         <div class = "ui segment" id="user-profile">
             <div class="ui card">
                 <div class="content">
@@ -20,10 +19,34 @@
                         someemail@gmail.com
                     </div>
                     <div class="extra content">
-                        <button class="ui button red tiny">Log out</button>
+                        <button class="ui button red tiny" id="logout-btn">Log out</button>
                     </div>
                 </div>
             </div>
+        </div>
+        <!------------ LOG IN FORM ------------->
+        <div class="ui segment login-form">
+            <h1 class="categoryHeader">ThinkItThru!</h1>
+            <form class="ui form">
+                <div class="ui stacked segment">
+                    <!---- Email ---->
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="mail icon"></i>
+                            <input type="email" placeholder="Email" />
+                        </div>
+                    </div>
+                    <!---- Password ---->
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input type="password" placeholder="Password" />
+                        </div>
+                    </div>
+                    <button class="ui button grey fluid">LOG IN</button>
+                </div>
+            </form>
+            <div class="ui message small">Need an acount? <a>Sign up!</a></div>
         </div>
 
         <div class="ui segment grey signup-form" id="signup-form">
@@ -51,7 +74,7 @@
             </div>
             <div class="ui message small">Already have an account? <a>Log In!</a></div>
         </div>
-    </div>
+    </section>
     <script src="Scripts/firebase.js" type="module"></script>
     <script src="Scripts/app.js" type="module"></script>
 </body>
