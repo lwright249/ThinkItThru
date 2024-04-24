@@ -10,3 +10,12 @@
     min-width: 300px;
     text-align: center;
 }
+
+
+#user-profile {
+    display: none;
+}
+
+.signup-form {
+    display: block;
+}
