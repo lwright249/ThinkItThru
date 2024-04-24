@@ -1,0 +1,130 @@
+body{
+    margin: 0px;
+    box-sizing: border-box;
+  }
+
+  /* Top Title/Logo and Hamburger Menu */
+/*Title Bar*/
+.Topnav{
+    background-color: #a0cfd3;
+    height:14vw;
+    border-radius: 0px;
+  }
+  
+  /*Title*/
+  h1.DashTitle {
+    color: black;
+  
+    font-size: 8vw;
+    text-align: center;
+  
+    display:block;
+    padding-top: 3vw;
+    margin:0;
+  }
+  
+  /*Hamburger button*/
+  div.Topnav button.icon {
+    color: white;
+    background: gray;
+  
+    font-size: 8vw;
+    text-align:center;
+    text-decoration: none;
+    border: none;
+    
+    position:absolute;
+    right:0;
+    top:0;
+    height: 14vw;
+    width: 14vw;
+  }
+  
+  
+  
+  /*Navigation menu (show/hide on hamburger click)*/
+  /*Link Box Properties*/
+  nav#LinkContainer {
+    display: none;
+    background-color: gray;
+  }
+  
+  /* Style navigation menu links */
+  nav a.navlinks{
+    color: white;
+    padding: 14px 16px;
+    display: block;
+    font-size: 6vw;
+  }
+  
+
+#GameStore{
+    display: flex;
+    background-color: lightblue;
+    justify-content: space-around;
+    margin: 5px;
+    border-radius: 5px;
+    padding-top: 10px;
+}
+
+.StoreSection p{
+  font-size: 5vw;
+}
+
+.Store_Img{
+    width: 12vw;
+}
+
+#Garden{
+    display: grid;
+    grid-template-areas:
+    "oneone onetwo onethree onefour"
+    "twoone twotwo twothree twofour"
+    "threeone threetwo threethree threefour"
+    "fourone fourtwo fourthree fourfour";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 3px;
+
+    margin: 5px;
+
+}
+
+.GardenSection{
+    background-color: blue;
+    height: 20vw;
+    text-align: center;
+    border-radius: 5px;
+}
+.GardenSection p{
+    margin: 2px;
+    text-align: center;
+    font-size: 4vw;
+}
+
+.GardenSection button{
+  height: 65%;
+  width: 65%;
+}
+
+.Garden_Img{
+  height: 90%;
+  width: 90%;
+}
+
+#garden_oneone{ grid-area: oneone;}
+#garden_onetwo{ grid-area: onetwo;}
+#garden_onethree{ grid-area: onethree;}
+#garden_onefour{ grid-area: onefour;}
+#garden_twoone{ grid-area: twoone;}
+#garden_twotwo{ grid-area: twotwo;}
+#garden_twothree{ grid-area: twothree;}
+#garden_twofour{ grid-area: twofour;}
+#garden_threeone{ grid-area: threeone;}
+#garden_threetwo{ grid-area: threetwo;}
+#garden_threethree{ grid-area: threethree;}
+#garden_threefour{ grid-area: threefour;}
+#garden_fourone{ grid-area: fourone;}
+#garden_fourtwo{ grid-area: fourtwo;}
+#garden_fourthree{ grid-area: fourthree;}
+#garden_fourfour{ grid-area: fourfour;}

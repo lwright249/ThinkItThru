@@ -1,212 +1,218 @@
-const difficulty = {
-    EASY: 0.8,
-    MEDIUM: 1.0,
-    HARD: 1.2
-}
+let newUser = new User("John", "Doe", 13123123, "CSCI", 5000, 1.1, 1, new TaskList(), "aaaaaaaaaaaaaaaa");
+newUser.userTasks.addTask(new Task("task one", 200, priority.HIGH, new Date(2024, 4, 5)));
+newUser.userTasks.addTask(new Task("task two", 200, priority.MED, new Date(2024, 4, 6)));
+newUser.userTasks.addTask(new Task("task three", 200, priority.LOW, new Date(2024, 4, 4)));
 
-//ASK ABOUT THIS
-const priority = {
-    LOW: 4,
-    MED: 2,
-    HIGH: 1
-}
-
-class BasicTask{
-    constructor(name, timeReq){
-        this.name = name;
-        this.timeReq = timeReq;
-        this.isCompleted = false;
-        this.timeWorked = 0;
-    }
-
-    getName(){
-        return this.name;
-    }
-    
-    getTimeWorked(){
-        return this.timeWorked;
-    }
-
-    getTimeRequired(){
-        return this.timeReq;
-    }
-
-    getIsCompleted(){
-        return this.isCompleted;
-    }
-
-    rewardPlayer(xp){
-        //TODO implement this sometime
-    }
-    
-
-}
-
-class Task extends BasicTask{ //maybe i remove basictask and hope noone notices, it might just make my life easier
-    constructor(name, timeReq, taskPriority, taskDifficulty, minTimeToAssign, daysUntilDue, subtasksList = null){
-        super();
-        this.timeWorked = 0;
-        this.isCompleted = false;
-
-        if(subtasksList == null){
-            this.hasSubTasks = false;
-        }
-        else{
-            this.hasSubTasks = true;
-        }
-        
-
-        this.name = name;
-        this.timeReq = timeReq;
-        this.taskPriority = taskPriority;
-        this.taskDifficulty = taskDifficulty;
-        this.minTimeToAssign = minTimeToAssign;
-        this.subtasksList = subtasksList;
-
-        
-        //REPLACE daysUntilDue with an actual Date() object!
-        this.daysUntilDue = daysUntilDue;
-    }
-
-    getSubTasks(){
-        if (this.subtasksList == null) {
-            return "N/A";
-        }
-        else{
-            //TODO this lmao
-        }
-    }
-
-    update(){
-        //TODO wtf do i do here
-    }
-
-    startTime(){
-        //I need to see if this is still useful
-        //maybe change to update time for the task?
-    }
-
-    pauseTime(){
-        //again is this useful
-    }
-
-    finishTask(){
-       //reward player
-       //delete this task from the TaskList 
-    }
-
-    //TODO temporary thing
-    printName(){
-        console.log(this.name);
-    }
-
-    getInfo(){
-        let infoString = "Name: " + this.name + " | " + this.timeWorked + " / " + this.timeReq + " minutes worked" + " | " + this.taskDifficulty + " difficulty and " + this.taskPriority + " priority" + " | " + this.daysUntilDue + " day(s) remaining" + " | queue# = " + (this.daysUntilDue * this.taskPriority);
-        return infoString;
-    }
-
-}
-
-class SubTask extends BasicTask{
-    //do I need subtask index here?
-
-    getName(){
-        return this.name + ": " + this.timeWorked + " minutes out of " + this.timeReq;
-    }
-}
-
-class TaskList{
-    constructor(firstTask = null){
-        if(this.firstTask == null){
-            this.taskList = [];
-        }
-        else{
-            this.taskList = [firstTask];
-        }
-        
-    }
-
-    evaluateDailyTasks(){
-        //hard stuff here
-    }
-
-    evaluateWeeklyTasks(){
-        //harder stuff here
-    }
-
-    addTask(task){
-        if(this.taskList == null){
-            console.log("error, task list null");
-            return;
-        }
-
-        //replace with something smart!!!
-        //this.taskList.push(task);
-        let newTaskQueueNum = task.daysUntilDue * task.taskPriority;
-        /*let currListSize = this.taskList.length;
-        this.taskList.forEach(
-            t => {
-                let iterationPriority = t.daysUntilDue * t.priority;
-
-                if(newTaskPriority < iterationPriority){
-                    this.taskList.splice()
-                }
-            }
-        )*/
-
-        this.taskList.length
-
-        if(this.taskList.length > 0 && newTaskQueueNum < (this.taskList[this.taskList.length - 1].daysUntilDue * this.taskList[this.taskList.length - 1].taskPriority)){
-            console.log("NOT pushed to back");
-            console.log("tasklist length: " + this.taskList.length);
-
-            let listLength = this.taskList.length;
-            let newTaskPushed = false;
-            
-            for(let i = 0; (i < this.taskList.length && !newTaskPushed); i++){
-            console.log("iteration: " + i);
-            let iterationPriority = this.taskList[i].daysUntilDue * this.taskList[i].taskPriority;
-
-                if(newTaskQueueNum < iterationPriority){
-                    console.log("this one's gonna crash huh");
-                    this.taskList.splice(i, 0, task);
-                    newTaskPushed = true;
-                }
-            }
-        }
-        else{
-            console.log("list length: " + this.taskList.length);
-            if(this.taskList.length > 0){
-                console.log("last priority #: " + this.taskList[this.taskList.length - 1].taskPriority);
-                console.log("current priority #: " + task.taskPriority);
-            }
-
-
-            console.log("pushed to back");
-            this.taskList.push(task);
-        }
-
-        
-    }
-
-    removeTask(index){
-
-    }
-
-    logTasks(){
-        this.taskList.forEach(
-            t => {
-                console.log(t.getInfo());
-            }
-        )
-    }
-}
-
+/*
 console.log("Hello World!");
 let myTaskList = new TaskList();
-myTaskList.addTask(new Task("task one", 2, priority.HIGH, difficulty.HARD, 15, 2));
-myTaskList.addTask(new Task("task two", 2, priority.MED, difficulty.HARD, 15, 3));
-myTaskList.addTask(new Task("task three", 2, priority.LOW, difficulty.EASY, 15, 1));
-myTaskList.addTask(new Task("task four", 2, priority.HIGH, difficulty.HARD, 15, 3));
+myTaskList.addTask(new Task("task one", 200, priority.HIGH, new Date(2024, 3, 5)));
+myTaskList.addTask(new Task("task two", 200, priority.MED, new Date(2024, 3, 6)));
+myTaskList.addTask(new Task("task three", 200, priority.LOW, new Date(2024, 3, 4)));
+//its not adding this one for some reason?
+myTaskList.addTask(new Task("task four", 200, priority.HIGH, new Date(2024, 3, 6)));
+myTaskList.addTask(new Task("task five", 200, priority.HIGH, new Date(2024, 3, 3)));
 myTaskList.logTasks();
 console.log("done");
+
+let taskToChange = myTaskList.getTask(1);
+taskToChange.name = "CHANGED";
+
+myTaskList.logTasks();generateTasks
+generateTasks();
+*/
+let myObj = new DailyObjectivesList(newUser.userTasks);
+myObj.printDayList();
+myObj.displayObjectivesList();
+generateTasks(newUser);
+
+
+console.log("days until assignment is due: " + DateManipulation.daysUntilDue(newUser.userTasks.getTask(0).dueDate));
+console.log("DONE");
+/*
+
+const container = document.getElementById('myDiv');
+const numberList = document.createElement('ul');
+
+//container.innerHTML = '';
+
+for (let i = 1; i <= 10; i++) {
+  const listItem = document.createElement('li');
+  listItem.textContent = `Number ${i}`;
+  numberList.appendChild(listItem);
+}
+
+container.appendChild(numberList);*/
+
+function showLinks() {
+  var x = document.getElementById("LinkContainer");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+function showEditLinks() {
+  var x = document.getElementById("edit_task");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+function showCheck() {
+  var x = document.getElementById("checkmark");
+  if (x.style.visibility === "hidden") {
+    x.style.visibility = "visible";
+  } else {
+    x.style.visibility = "hidden";
+  }
+}
+
+function PausePlay() {
+  var x = document.getElementById("playimg");
+  var y = document.getElementById("pauseimg");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+    y.style.display = "block";
+  } else {
+    x.style.display = "block";
+    y.style.display = "none";
+  }
+}
+
+function generateTasks(user) {
+  /*var node = document.getElementById('node-id');
+node.innerHTML('<p>some dynamic html</p>');*/
+
+  var dashboardTasks = document.getElementById("TaskBoxSection");
+  let html = "";
+
+  for(let i = 0; i < user.userTasks.taskList.length; i++){
+    html += htmlForTask(user.userTasks.taskList[i], i);
+  }
+
+  dashboardTasks.innerHTML = html;  
+}
+
+/*
+
+
+        <div class="TaskBox">
+            <div class="Task">
+                <div class="EditTaskBtn"><a href="javascript:void(0);" class="icon" onclick="showLinks()"><img src="Styles/more-horiz.svg"></img> </a></div>
+                <div class="TaskName"><h3>Task 1</h3> <p>Time Left: 10:04:31</p></div>
+                <div class="PauseAndPlay"><h3>Pause/Play</h3> <p>Time Spent: 1:02:15</p></div>
+                <div class="CheckBtn"><button><span>&#9744</span><span id="checkmark">&#10008</span></button></div>
+            </div>
+
+            <div class="Subtask"><p>subtask1</p></div>
+            <div class="Subtask">subtask2</div>
+        </div>
+
+        */
+
+function htmlForTask(Task, index){
+  let html = "<div id = \"TaskBox" + index + "\">";
+  html += "<div class=\"Task " + index + "\">";
+  html += "<div class=\"EditTaskBtn\"><a href=\"javascript:void(0);\" class=\"icon\" onclick=\"showLinks()\"><img src=\"Styles/more-horiz.svg\"></img> </a></div>";
+  html += "<div class= TaskName><h3>" + Task.name + "</h3> <p>Time Left: " + formatTimeFromMinutes(Task.getTimeRemaining()) + "</p></div>"; //TODO format date to work in seconds!
+  html += "<div class=\"PauseAndPlay\"><h3>Pause/Play</h3> <p>Time Spent:"+ formatTimeFromMinutes(Task.timeWorked) +"</p></div>";
+  html += "<div class=\"CheckBtn\"><button><span>&#9744</span><span id=\"checkmark\">&#10008</span></button></div></div>"; //TODO connect this to Task somehow
+  html += "<div class=\"TimerBtn\"><button onclick = \"startTimer("+index+")\"><span id=\"timer\">timer</span></button></div></div>";
+  html += "<div class=\"TimerBtn\"><button onclick = \"stopTimer("+index+")\"><span id=\"timer\">stop</span></button></div></div>";
+  html += "<div id = \"TimerThing"+index+"\"<h3>no timer yet<h3> </div>"
+  
+  if(Task.hasSubTasks == true){
+    if(Task.subtasksList == null){
+      console.log("Levi made a coding error");
+    }
+    else{
+      for(let i = 0; i < Task.subtasksList.length; i++){
+        html += "<div class=\"Subtask\"><p>"+ Task.subtasksList[i].name +"</p></div>";
+      }
+    }
+  }
+
+
+  html += "</div>";
+
+  return html;
+
+}
+
+function formatTimeFromMinutes(timeInMinutes){
+  let hours = Math.floor(timeInMinutes/60);
+  let remainingMinutes = timeInMinutes%60;
+  return hours + " : " + remainingMinutes;
+}
+
+function formatTimeFromSeconds(timeInSeconds){
+  let hours = Math.floor(timeInSeconds/(60*60));
+  let minutes = Math.floor(timeInSeconds/60)%60;
+  let remainingSeconds = timeInSeconds%(60);
+
+  let hoursString = hours.toString().padStart(2,'0');
+  let minutesString = minutes.toString().padStart(2,'0');
+  let secondsString = remainingSeconds.toString().padStart(2,'0');
+  return hoursString + " : " + minutesString + " : " + secondsString;
+
+  /*const hStr = h.toString().padStart(2, '0');
+  const mStr = m.toString().padStart(2, '0');
+  const sStr = s.toString().padStart(2, '0');
+
+  return `${hStr}:${mStr}:${sStr}`;
+  */
+}
+
+/*function startTimer(indexNum){
+  let timer = new Timer();
+  setInterval(timer.showTime(("TimerThing"+indexNum),1000));
+}*/
+
+//called by dashboard html, starts Timer and changes user's currTimer
+function startTimer(indexNum) {
+  let ownerTask = newUser.userTasks.getTask(indexNum);
+  newUser.currTimer = new Timer(ownerTask);
+  const myDiv = document.getElementById("TimerThing"+indexNum);
+
+  const timerUpdate = setInterval(() => {
+    myDiv.textContent = newUser.currTimer.showTime();
+  }, 1000);
+}
+
+//stops currTimer with stopTime();
+function stopTimer(){
+  newUser.currTimer.stopTime();
+}
+
+//TODO why am i created NEW timers on startTimer
+class Timer{
+  constructor(ownerTask){
+      this.beginTime = new Date();
+      this.i = 0;
+      this.ownerTask = ownerTask;
+  }
+  //increments and returns time
+  showTime(){
+    //console.log("element: " + document.getElementById(elementId).innerHTML);
+      this.i++;
+      return formatTimeFromSeconds(this.i);
+      //document.getElementById(elementId).innerHTML = this.i;
+  }
+
+  //stops time and updates ownerTask's time worked
+  stopTime(){
+    /* 
+    TODO: 
+    */
+    let timeworkedInMinutes = Math.floor(this.i);
+    this.ownerTask.timeWorked += timeworkedInMinutes;
+    generateTasks(newUser);
+    this.i = 0;
+
+  }
+
+}
