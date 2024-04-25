@@ -66,6 +66,32 @@ body {
     background-color: #ec482b;
 }
 
+.task-extension {
+    position: relative;
+    padding-right: 40px; /* Give space for checkbox */
+}
+
+.task-checkbox {
+    display: none; /* Hide the default checkbox */
+}
+
+.checkbox-label {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+    background: white;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.task-checkbox:checked + .checkbox-label {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 0 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>') no-repeat center;
+    border-color: #4a90e2;
+}
+
 @media (max-width: 768px) {
     .task-card {
         margin-bottom: 20px; /* Larger margin at smaller screen sizes */
