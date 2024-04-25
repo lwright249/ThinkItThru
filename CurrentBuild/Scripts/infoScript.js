@@ -194,7 +194,8 @@ class TaskList{
     }
 
     removeTask(index){
-        //nothing here yet
+        //TODO test this
+        this.taskList.splice(index,1);
     }
 
     getTask(index){
