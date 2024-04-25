@@ -92,6 +92,7 @@
             <div class="ui message small">Need an acount? <a id="need-an-account-btn">Sign up!</a></div>
         </div>
 
+        <!----------------------- Sign Up Form-------------------------->
         <div class="ui segment grey signup-form" id="signup-form">
             <h1 class="categoryHeader">ThinkItThru!</h1>
             <div class="ui form">
@@ -100,14 +101,34 @@
                         Error
                     </div>
 
+                    <!---------- Name ----------->
                     <div class="field">
-                        <div class="ui left icon input">
+                        <div class="ui left icon input big">
+                            <i class="user icon"></i>
+                            <input type="text" placeholder="First Name" id="name" />
+                        </div>
+                    </div>
+
+                    <!---------- Major ---------->
+                    <div class="field">
+                        <select class="ui dropdown" id="major">
+                            <option value="">Major</option>
+                            <option value="4">Business</option>
+                            <option value="3">Health</option>
+                            <option value="2">Social Sciences/History</option>
+                            <option value="1">Engineering</option>
+                            <option value="0">Computer Science</option>
+                        </select>
+                    </div>
+                    <!---------- Email ---------->
+                    <div class="field">
+                        <div class="ui left icon input big">
                             <i class="mail icon"></i>
                             <input type="email" placeholder="Email" id="email"/>
                         </div>
                     </div>
                     <div class="field">
-                        <div class="ui left icon input">
+                        <div class="ui left icon input big">
                             <i class="lock icon"></i>
                             <input type="password" placeholder="Password" id="password"/>
                         </div>

@@ -10,13 +10,29 @@ import {
     signInWithPopup
  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    getDoc,
+} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
 const auth = getAuth();
+const db = getFirestore();
+
+const date = new Date();
+let currentDay= String(date.getDate()).padStart(2,'0');
+let currentMonth= String(date.getMonth()+1).padStart(2,'0');
+let currentYear= date.getFullYear();
+let currentDate= `${currentMonth}-${currentDay}-${currentYear}`;
 
 const mainView = document.getElementById("main-view");
 
 const emailVerificationView = document.getElementById("email-verification");
 const resendEmailBtn = document.getElementById("resend-email-btn");
 
+const name = document.getElementById("name");
+const major = document.getElementById("major");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const signUpBtn = document.getElementById("signup-btn");
@@ -42,19 +58,27 @@ const loginBtn = document.getElementById("login-btn");
 const loginErrorMessage = document.getElementById("login-error-message");
 const needAnAccountBtn = document.getElementById("need-an-account-btn");
 
-onAuthStateChanged(auth, (user) => {
-    console.log(user);
+onAuthStateChanged(auth, async (user) => {
+    // console.log(user);
     if(user) {
 
         if(!user.emailVerified) {
             emailVerificationView.style.display = "block";
             userProfileView.style.display = "none";
-        } else if (user.emailVerified) {
+        } /*else if (user.emailVerified) {
             window.location.href="dashboard.html";
-        } else {
+        }*/ else {
             userProfileView.style.display = "block";
             UIuserEmail.innerHTML = user.email;
             emailVerificationView.style.display = "none";
+            
+            const docRef = doc(db, "users", user.uid);
+            try {
+                const docSnap = await getDoc(docRef);
+                console.log(docSnap.data());
+            } catch (error) {
+                console.log(error);
+            }
         }
 
         loginForm.style.display = "none";
@@ -79,6 +103,17 @@ const signUpButtonPressed = async (e) => {
         );
 
         await sendEmailVerification(userCredential.user);
+
+        const docRef = doc(db, "users", userCredential.user.uid);
+        await setDoc(docRef, {
+            name: name.value,
+            major: major.value,
+            email: email.value,
+            exp: 0,
+            streak: 0,
+            lastLogin: currentDate,
+            gameboard: "",
+        });
 
         console.log(userCredential);
     } catch (error) {
