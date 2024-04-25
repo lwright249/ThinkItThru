@@ -75,13 +75,12 @@ class Task extends BasicTask{ //maybe i remove basictask and hope noone notices,
         this.dueDate = dueDate;
     }
 
-    getSubTasks(){
-        if (this.subtasksList == null) {
-            return "N/A";
-        }
-        else{
-            //TODO this lmao
-        }
+    getSubTaskListSize(){
+        return this.subtasksList.length
+    }
+
+    getSubTask(index){
+        return this.subtasksList[index];
     }
 
     update(){
@@ -137,6 +136,10 @@ class SubTask extends BasicTask{
     getName(){
         return this.name;
     }
+
+    getIsCompleted(){
+        return this.isCompleted;
+    }
 }
 
 //One per user, will be used to store Tasks, and is used to instantiate Objectives List in another script
@@ -191,7 +194,8 @@ class TaskList{
     }
 
     removeTask(index){
-        //nothing here yet
+        //TODO test this
+        this.taskList.splice(index,1);
     }
 
     getTask(index){
