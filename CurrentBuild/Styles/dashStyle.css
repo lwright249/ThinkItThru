@@ -130,3 +130,19 @@ body {
 .btn-floating:hover .btn-label {
     display: inline;
 }
+
+/* Styling for the submit button */
+#newTaskForm button[type="submit"] {
+    background-color: #AA8C66; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding for button size */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow */
+    transition: background-color 0.3s; /* Smooth transition for color change */
+}
+
+#newTaskForm button[type="submit"]:hover,
+#newTaskForm button[type="submit"]:active {
+    background-color: #ec482b; /* Color when hovered or clicked */
+}
