@@ -3,6 +3,14 @@ let timers = {};
 
 function deleteTask(element) {
     const taskCard = element.closest('.card');
+
+    //remove element from TaskList
+    let elementID = element.getAttribute("id");
+    console.log(elementID);
+    console.log(element)
+
+
+
     taskCard.remove(); // Removes the task card from the DOM
 }
 
