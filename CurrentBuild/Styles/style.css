@@ -42,3 +42,7 @@
 #reset-password-form {
     display: none;
 }
+
+#login-with-google-btn {
+    margin-bottom: 10px;
+}

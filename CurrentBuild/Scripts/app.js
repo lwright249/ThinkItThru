@@ -5,7 +5,9 @@ import {
     signOut,
     signInWithEmailAndPassword,
     sendEmailVerification,
-    sendPasswordResetEmail
+    sendPasswordResetEmail,
+    GoogleAuthProvider,
+    signInWithPopup
  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
 const auth = getAuth();
@@ -32,6 +34,7 @@ const resetPasswordBtn = document.getElementById("reset-password-btn");
 const resetPasswordEmail = document.getElementById("reset-password-email");
 const resetPasswordMessage = document.getElementById("rp-message");
 
+const loginWithGoogleBtn = document.getElementById("login-with-google-btn");
 const loginForm = document.getElementById("login-form");
 const loginEmail = document.getElementById("login-email");
 const loginPassword = document.getElementById("login-password");
@@ -112,19 +115,6 @@ const loginButtonPressed = async (e) => {
     }
 }
 
-/*onAuthStateChanged(auth, (user) => {
-    console.log(user);
-    if(user) {
-        signUpFormView.style.display = "none";
-        userProfileView.style.display = "block";
-        UIuserEmail.innerHTML = user.email;
-    } else {
-        signUpFormView.style.display = "block";
-        userProfileView.style.display = "none";
-    }
-    mainView.classList.remove("loading");
-});*/
-
 const needAnAccountButtonPressed = () => {
     loginForm.style.display = "none";
     signUpFormView.style.display = "block";
@@ -157,7 +147,17 @@ const resetPasswordButtonPressed = async (e) => {
         resetPasswordMessage.classList.add("error");
     }
     resetPasswordMessage.classList.remove("hidden");
+}
 
+const loginWithGoogleButtonPressed = async (e) => {
+    e.preventDefault();
+    const googleProvider = new GoogleAuthProvider();
+    
+    try {
+        await signInWithPopup(auth, googleProvider);
+    } catch (error) {
+        console.log(error.code);
+    }
 }
 
 signUpBtn.addEventListener("click", signUpButtonPressed);
@@ -168,6 +168,7 @@ haveAnAccountBtn.addEventListener("click", haveAnAccountButtonPressed);
 resendEmailBtn.addEventListener("click", resendButtonPressed);
 forgotPasswordBtn.addEventListener("click", forgotPasswordButtonPressed);
 resetPasswordBtn.addEventListener("click", resetPasswordButtonPressed);
+loginWithGoogleBtn.addEventListener("click", loginWithGoogleButtonPressed);
 
 const formatErrorMessage = (errorCode, action) => {
     let message = "";
