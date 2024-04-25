@@ -75,13 +75,12 @@ class Task extends BasicTask{ //maybe i remove basictask and hope noone notices,
         this.dueDate = dueDate;
     }
 
-    getSubTasks(){
-        if (this.subtasksList == null) {
-            return "N/A";
-        }
-        else{
-            //TODO this lmao
-        }
+    getSubTaskListSize(){
+        return this.subtasksList.length
+    }
+
+    getSubTask(index){
+        return this.subtasksList[index];
     }
 
     update(){
@@ -136,6 +135,10 @@ class SubTask extends BasicTask{
 
     getName(){
         return this.name;
+    }
+
+    getIsCompleted(){
+        return this.isCompleted;
     }
 }
 

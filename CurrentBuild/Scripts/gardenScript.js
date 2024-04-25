@@ -169,6 +169,7 @@ function updateScreen(garden){
     let string = garden.gardenStr;
     let html = "";
     var gardenDiv = document.getElementById("garden");
+    console.log(gardenDiv);
 
     for(let i = 0; i < 4; i++){
         html += "<div class=GardenRow id=row"+i+">";
