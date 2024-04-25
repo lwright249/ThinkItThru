@@ -62,5 +62,8 @@ function toggleTimer(button, timerId) {
 
         //add time to Task from TaskList
         addTimeToUserTask(elementID, timeToAdd);
+
+        //TODO: delete this next line when done testing
+        //displayTasks();
     }
 }
