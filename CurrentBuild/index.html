@@ -9,8 +9,24 @@
 </head>
 <body>
     <section class="ui segment loading" id="main-view">
-        <div class = "ui segment" id="user-profile">
-            <div class="ui card">
+
+        <!--------------------------- Email Verification --------------------->
+        <div class="ui segment big" id="email-verification">
+            <div class="ui card fluid">
+                <div class="content">
+                    <div class="header">Verification Email Sent! <i class="icon check green"></i></div>
+                    <div class="meta" id="verify-body">We've sent an email for verification. 
+                        Please click the link in the email and confirm.</div>
+                </div>
+                <div class="extra content">
+                    <button class="ui button red big" id="resend-email-btn">Resend</button>
+                </div>
+            </div>
+        </div>
+
+        <!------------------------------ User Profile ------------------------>
+        <div class = "ui segment big" id="user-profile">
+            <div class="ui card fluid">
                 <div class="content">
                     <div class="header">
                         User Profile

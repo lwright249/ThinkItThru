@@ -3,12 +3,15 @@ import {
     createUserWithEmailAndPassword,
     onAuthStateChanged,
     signOut,
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    sendEmailVerification
  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
 const auth = getAuth();
 
 const mainView = document.getElementById("main-view");
+
+const emailVerificationView = document.getElementById("email-verification");
 
 const email = document.getElementById("email");
 const password = document.getElementById("password");
@@ -31,10 +34,19 @@ const needAnAccountBtn = document.getElementById("need-an-account-btn");
 onAuthStateChanged(auth, (user) => {
     console.log(user);
     if(user) {
+
+        if(!user.emailVerified) {
+            emailVerificationView.style.display = "block";
+            userProfileView.style.display = "none";
+        } else {
+            userProfileView.style.display = "block";
+            UIuserEmail.innerHTML = user.email;
+            emailVerificationView.style.display = "none";
+        }
+
         loginForm.style.display = "none";
         signUpFormView.style.display = "none";
-        userProfileView.style.display = "block";
-        UIuserEmail.innerHTML = user.email;
+
     } else {
         //signUpFormView.style.display = "block";
         loginForm.style.display = "block";
@@ -52,6 +64,9 @@ const signUpButtonPressed = async (e) => {
             email.value, 
             password.value
         );
+
+        await sendEmailVerification(userCredential.user);
+
         console.log(userCredential);
     } catch (error) {
         console.log(error.code);
