@@ -14,8 +14,9 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const signUpBtn = document.getElementById("signup-btn");
 const UIErrorMessage = document.getElementById("error-message");
-
 const signUpFormView = document.getElementById("signup-form");
+const haveAnAccountBtn = document.getElementById("have-an-account-btn");
+
 const userProfileView = document.getElementById("user-profile");
 const UIuserEmail = document.getElementById("user-email");
 const logOutBtn =  document.getElementById("logout-btn");
@@ -25,11 +26,13 @@ const loginEmail = document.getElementById("login-email");
 const loginPassword = document.getElementById("login-password");
 const loginBtn = document.getElementById("login-btn");
 const loginErrorMessage = document.getElementById("login-error-message");
+const needAnAccountBtn = document.getElementById("need-an-account-btn");
 
 onAuthStateChanged(auth, (user) => {
     console.log(user);
     if(user) {
         loginForm.style.display = "none";
+        signUpFormView.style.display = "none";
         userProfileView.style.display = "block";
         UIuserEmail.innerHTML = user.email;
     } else {
@@ -99,9 +102,21 @@ const loginButtonPressed = async (e) => {
     mainView.classList.remove("loading");
 });*/
 
+const needAnAccountButtonPressed = () => {
+    loginForm.style.display = "none";
+    signUpFormView.style.display = "block";
+}
+
+const haveAnAccountButtonPressed = () => {
+    signUpFormView.style.display = "none";
+    loginForm.style.display = "block";
+}
+
 signUpBtn.addEventListener("click", signUpButtonPressed);
 logOutBtn.addEventListener("click", logOutButtonPressed);
 loginBtn.addEventListener("click", loginButtonPressed);
+needAnAccountBtn.addEventListener("click", needAnAccountButtonPressed);
+haveAnAccountBtn.addEventListener("click", haveAnAccountButtonPressed);
 
 const formatErrorMessage = (errorCode, action) => {
     let message = "";
