@@ -4,7 +4,8 @@ import {
     onAuthStateChanged,
     signOut,
     signInWithEmailAndPassword,
-    sendEmailVerification
+    sendEmailVerification,
+    sendPasswordResetEmail
  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
 const auth = getAuth();
@@ -12,6 +13,7 @@ const auth = getAuth();
 const mainView = document.getElementById("main-view");
 
 const emailVerificationView = document.getElementById("email-verification");
+const resendEmailBtn = document.getElementById("resend-email-btn");
 
 const email = document.getElementById("email");
 const password = document.getElementById("password");
@@ -23,6 +25,12 @@ const haveAnAccountBtn = document.getElementById("have-an-account-btn");
 const userProfileView = document.getElementById("user-profile");
 const UIuserEmail = document.getElementById("user-email");
 const logOutBtn =  document.getElementById("logout-btn");
+
+const resetPasswordForm = document.getElementById("reset-password-form");
+const forgotPasswordBtn = document.getElementById("forgot-password-btn");
+const resetPasswordBtn = document.getElementById("reset-password-btn");
+const resetPasswordEmail = document.getElementById("reset-password-email");
+const resetPasswordMessage = document.getElementById("rp-message");
 
 const loginForm = document.getElementById("login-form");
 const loginEmail = document.getElementById("login-email");
@@ -127,11 +135,39 @@ const haveAnAccountButtonPressed = () => {
     loginForm.style.display = "block";
 }
 
+const resendButtonPressed = async () => {
+    await sendEmailVerification(auth.currentUser);
+}
+
+const forgotPasswordButtonPressed = () => {
+    resetPasswordForm.style.display = "block";
+    loginForm.style.display = "none";
+}
+
+const resetPasswordButtonPressed = async (e) => {
+    e.preventDefault();
+    console.log(resetPasswordEmail.value);
+    try{
+        await sendPasswordResetEmail(auth, resetPasswordEmail.value);
+        resetPasswordMessage.innerHTML = `We've sent a link to reset your password to ${resetPasswordEmail.value}`;
+        resetPasswordMessage.classList.add("success");
+    } catch (error) {
+        console.log(error);
+        resetPasswordMessage.innerHTML = "Please provide a valid registered email.";
+        resetPasswordMessage.classList.add("error");
+    }
+    resetPasswordMessage.classList.remove("hidden");
+
+}
+
 signUpBtn.addEventListener("click", signUpButtonPressed);
 logOutBtn.addEventListener("click", logOutButtonPressed);
 loginBtn.addEventListener("click", loginButtonPressed);
 needAnAccountBtn.addEventListener("click", needAnAccountButtonPressed);
 haveAnAccountBtn.addEventListener("click", haveAnAccountButtonPressed);
+resendEmailBtn.addEventListener("click", resendButtonPressed);
+forgotPasswordBtn.addEventListener("click", forgotPasswordButtonPressed);
+resetPasswordBtn.addEventListener("click", resetPasswordButtonPressed);
 
 const formatErrorMessage = (errorCode, action) => {
     let message = "";

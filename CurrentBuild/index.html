@@ -10,6 +10,22 @@
 <body>
     <section class="ui segment loading" id="main-view">
 
+        <!--------------------------- Forgot Password ------------------------>
+        <div class="ui segment big" id="reset-password-form">
+            <h1>Reset Your Password</h1>
+            <p>Enter your email address to reset your password:</p>
+            <div class="ui message hidden" id="rp-message"></div>
+            <form class="ui form big">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="mail icon"></i>
+                        <input type="email" placeholder="Email" id="reset-password-email" />
+                    </div>
+                </div>
+                <button class="ui button red big" id="reset-password-btn">Reset Password</button>
+            </form>
+        </div>
+
         <!--------------------------- Email Verification --------------------->
         <div class="ui segment big" id="email-verification">
             <div class="ui card fluid">
@@ -60,7 +76,9 @@
                             <input type="password" placeholder="Password" id="login-password" />
                         </div>
                     </div>
-                    <button class="ui button grey fluid" id="login-btn">LOG IN</button>
+                    <button class="ui button grey fluid big" id="login-btn">LOG IN</button>
+                    <br />
+                    <a id="forgot-password-btn">Forgot Password</a>
                 </div>
             </form>
             <div class="ui message small">Need an acount? <a id="need-an-account-btn">Sign up!</a></div>

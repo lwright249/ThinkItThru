@@ -33,3 +33,12 @@
 #verify-body {
     margin-top: 15px;
 }
+
+#forgot-password-btn {
+    font-size: 17px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+#reset-password-form {
+    display: none;
+}
