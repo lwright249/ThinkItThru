@@ -47,6 +47,25 @@ body {
     color: #333; /* Adjust color */
 }
 
+.task-extension {
+    background-color: #f3e9dc; /* Lighter shade than the card for distinction */
+    color: #333; /* Text color */
+    padding: 10px 20px; /* Padding for better text display */
+    margin: -1px 15px 15px 15px; /* Aligns visually with the card, adjusts bottom margin */
+    border: 1px solid #ccc; /* Subtle border if needed */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional shadow for depth */
+}
+.options-button {
+    background-color: #AA8C66;
+    color: white; /* White text color */
+    border: none; /* No border */
+    padding: 8px 16px; /* Top-bottom and left-right padding */
+}
+
+.options-button:hover, .options-button:focus {
+    background-color: #ec482b;
+}
+
 @media (max-width: 768px) {
     .task-card {
         margin-bottom: 20px; /* Larger margin at smaller screen sizes */
