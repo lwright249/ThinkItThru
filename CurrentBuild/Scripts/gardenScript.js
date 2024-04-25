@@ -19,7 +19,7 @@ class Garden{
             console.log("validate purchase fail");
             return; //TODO: maybe make alert for bad purchase?
         }
-        this.updateScreen();
+        updateScreen(this);
 
     }
 
@@ -30,19 +30,26 @@ class Garden{
         
         switch (this.selectedStoreItem) {
             case 'b':
+            case 'c':
+            case 'd':
+            case 'e':
                 itemCost = 500;
                 break;
         
-            case 'c':
+            case 'f':
                 itemCost = 700;
                 break;
             
-            case 'd':
+            case 'g':
                 itemCost = 1000;
                 break;
 
-            case 'e':
+            case 'h':
                 itemCost = 1500;
+                break;
+
+            case 'a':
+                itemCost = 0;
                 break;
         
             default:
@@ -87,25 +94,6 @@ class Garden{
     updateUserXPGardenMultiplier(){
         let newMultiplier = 1;
 
-        /*this.gardenStr.forEach(char => {
-            switch (char) {
-                case 'a':
-                    newMultiplier += .05;
-                    break;
-                case 'b':
-                    newMultiplier += .05;
-                    break;
-                case 'c':
-                    newMultiplier += .05;
-                    break;
-                case 'd':
-                    newMultiplier += .05;
-                    break;
-                default:
-                    break;
-            }
-        });*/
-
         for(let i = 0; i < this.gardenStr.length; i++){
             let char = this.gardenStr.charAt(i);
 
@@ -114,12 +102,21 @@ class Garden{
                     newMultiplier += .05;
                     break;
                 case 'c':
-                    newMultiplier += .10;
+                    newMultiplier += .05;
                     break;
                 case 'd':
-                    newMultiplier += .15;
+                    newMultiplier += .05;
                     break;
                 case 'e':
+                    newMultiplier += .05;
+                    break;
+                case 'f':
+                    newMultiplier += .10;
+                    break;
+                case 'g':
+                    newMultiplier += .15;
+                    break;
+                case 'h':
                     newMultiplier += .25;
                     break;
                 default:
@@ -145,5 +142,78 @@ function beginPurchase(garden, tile){
     garden.selectedTile = tile;
     console.log("updating tile" + garden.selectedTile);
     garden.userPurchase();
+}
+
+/*
+<div class=Garden>
+        <div class=GardenRow id=row1>
+            <div class=item id=flower0>
+                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
+                        onclick="beginPurchase(myGarden, 0)"></img></button>
+            </div>
+            <div class=item id=flower1>
+                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
+                        onclick="beginPurchase(myGarden, 1)"></img></button>
+            </div>
+            <div class=item id=flower2>
+                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
+                        onclick="beginPurchase(myGarden, 2)"></img></button>
+            </div>
+            <div class=item id=flower3>
+                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
+                        onclick="beginPurchase(myGarden, 3)"></img></button>
+            </div>
+        </div>
+*/
+function updateScreen(garden){
+    let string = garden.gardenStr;
+    let html = "";
+    var gardenDiv = document.getElementById("garden");
+
+    for(let i = 0; i < 4; i++){
+        html += "<div class=GardenRow id=row"+i+">";
+        for(let j = 0; j < 4; j++){
+            let tileNum = (4*i)+j;
+            let tileFlower = string.charAt(tileNum);
+            let tileIDString = "";
+
+            switch (tileFlower) {
+                case 'b':
+                    tileIDString = "Images/svgs/flower1.svg";
+                    break;
+                case 'c':
+                    tileIDString = "Images/svgs/flower3.svg";
+                    break;
+                case 'd':
+                    tileIDString = "Images/svgs/flower6.svg";
+                    break;
+                case 'e':
+                    tileIDString = "Images/svgs/flower7.svg";
+                    break;
+                case 'f':
+                    tileIDString = "Images/svgs/flower8.svg";
+                    break;
+                case 'g':
+                    tileIDString = "Images/svgs/flower9.svg";
+                    break;
+                case 'h':
+                    tileIDString = "Images/svgs/sapling.svg";
+                    break;
+                default:
+                    tileIDString = "Images/svgs/grasstile.svg";
+                    break;
+            }
+
+            html += "<div class=item id=flower"+tileNum+">";
+            html += "<button class=\"GameButton\"><img src=\""+tileIDString+"\"";
+            html += "onclick=\"beginPurchase(myGarden, "+ tileNum +")\"></img></button>";
+            html += "</div>"
+
+        }
+        html+= "</div>"
+    }
+
+    gardenDiv.innerHTML = html;
+    
 }
 
