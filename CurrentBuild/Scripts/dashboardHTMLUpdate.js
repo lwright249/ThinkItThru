@@ -99,7 +99,7 @@ function displayTasks(){
     for(let i = 0; i < newUser.userTasks.taskList.length; i++){
         let currTask = newUser.userTasks.taskList[i];
         //TODO: subtasksList is ALWAYS null, even when there are subtasks
-        let subtasksList = currTask.subtaskList;
+        let subtasksList = currTask.subtasksList;
 
         html += "<div class=\"col-12 col-md-6 col-lg-4\" id = \"task0\">";
         html += "<div class=\"card task-card\"><div class=\"dropdown\">";
