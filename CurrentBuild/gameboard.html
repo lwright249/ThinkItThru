@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+
     <script src="Scripts/infoScript.js"></script>
     <script src="Scripts/gardenScript.js"></script>
     <script src="Scripts/game.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <style>
         body {
             background-color: #e2ae67;
@@ -71,7 +71,7 @@
             margin: 0px;
         }
 
-        .item h3{
+        .item h3 {
             font-size: 100%;
         }
 
@@ -85,7 +85,8 @@
 
     <div class=Shop>
         <div class=item id=flower>
-            <button class="GameButton"><img src="Images/svgs/flower1.svg" onclick="updateStoreItem(myGarden, 'b')"></img></button>
+            <button class="GameButton"><img src="Images/svgs/flower1.svg"
+                    onclick="updateStoreItem(myGarden, 'b')"></img></button>
             <h3>
                 Cost: 500xp
             </h3>
@@ -95,49 +96,43 @@
         </div>
 
         <div class=item id=flower>
-            <button class="GameButton"><img src="Images/svgs/flower3.svg" onclick="clicked()"></img></button>
+            <button class="GameButton"><img src="Images/svgs/flower3.svg"
+                    onclick="updateStoreItem(myGarden, 'c')"></img></button>
             <h3>
-                Cost: 700xp
+                Cost: 500xp
             </h3>
             <h3>
-                Bonus: 10%xp
-            </h3>
-        </div>
-
-        <div class=item id=flower>
-            <button class="GameButton"><img src="Images/svgs/flower6.svg" onclick="clicked()"></img></button>
-            <h3>
-                Cost: 1000xp
-            </h3>
-            <h3>
-                Bonus: 15%xp
+                Bonus: 5%xp
             </h3>
         </div>
 
         <div class=item id=flower>
-            <button class="GameButton"><img src="Images/svgs/flower7.svg" onclick="clicked()"></img></button>
+            <button class="GameButton"><img src="Images/svgs/flower6.svg"
+                    onclick="updateStoreItem(myGarden, 'd')"></img></button>
             <h3>
-                Cost: 1500xp
+                Cost: 500xp
             </h3>
             <h3>
-                Bonus: 25%xp
+                Bonus: 5%xp
+            </h3>
+        </div>
+
+        <div class=item id=flower>
+            <button class="GameButton"><img src="Images/svgs/flower7.svg"
+                    onclick="updateStoreItem(myGarden, 'e')"></img></button>
+            <h3>
+                Cost: 500xp
+            </h3>
+            <h3>
+                Bonus: 5%xp
             </h3>
         </div>
     </div>
 
     <div class=Shop>
         <div class=item id=flower>
-            <button class="GameButton"><img src="Images/svgs/flower8.svg" onclick="clicked()"></img></button>
-            <h3>
-                Cost: 500xp
-            </h3>
-            <h3>
-                Bonus: 5%xp
-            </h3>
-        </div>
-
-        <div class=item id=flower>
-            <button class="GameButton"><img src="Images/svgs/flower9.svg" onclick="clicked()"></img></button>
+            <button class="GameButton"><img src="Images/svgs/flower8.svg"
+                    onclick="updateStoreItem(myGarden, 'f')"></img></button>
             <h3>
                 Cost: 700xp
             </h3>
@@ -147,7 +142,8 @@
         </div>
 
         <div class=item id=flower>
-            <button class="GameButton"><img src="Images/svgs/sapling.svg" onclick="clicked()"></img></button>
+            <button class="GameButton"><img src="Images/svgs/flower9.svg"
+                    onclick="updateStoreItem(myGarden, 'g')"></img></button>
             <h3>
                 Cost: 1000xp
             </h3>
@@ -157,7 +153,8 @@
         </div>
 
         <div class=item id=flower>
-            <button class="GameButton"><img src="Images/svgs/grasstile.svg" onclick="clicked()"></img></button>
+            <button class="GameButton"><img src="Images/svgs/sapling.svg"
+                    onclick="updateStoreItem(myGarden, 'h')"></img></button>
             <h3>
                 Cost: 1500xp
             </h3>
@@ -165,78 +162,90 @@
                 Bonus: 25%xp
             </h3>
         </div>
+
+        <div class=item id=flower>
+            <button class="GameButton"><img src="Images/svgs/grasstile.svg"
+                    onclick="updateStoreItem(myGarden, 'a')"></img></button>
+            <h3>
+                Remove Item
+            </h3>
+            <h3>
+
+            </h3>
+        </div>
     </div>
 
-    <div class=Garden>
-        <div class=GardenRow id=row1>
+    <div class=Garden id = garden>
+        <div class=GardenRow id=row0>
             <div class=item id=flower>
-                <button class="GameButton"><img src="Images/svgs/grasstile.svg" onclick="clicked()"></img></button>
+                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
+                        onclick="beginPurchase(myGarden, 0)"></img></button>
             </div>
             <div class=item id=flower1>
                 <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 0)"></img></button>
+                        onclick="beginPurchase(myGarden, 1)"></img></button>
             </div>
             <div class=item id=flower2>
                 <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 0)"></img></button>
+                        onclick="beginPurchase(myGarden, 2)"></img></button>
             </div>
             <div class=item id=flower3>
                 <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 0)"></img></button>
+                        onclick="beginPurchase(myGarden, 3)"></img></button>
+            </div>
+        </div>
+        <div class=GardenRow id=row1>
+            <div class=item id=flower>
+                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
+                        onclick="beginPurchase(myGarden, 4)"></img></button>
+            </div>
+            <div class=item id=flower1>
+                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
+                        onclick="beginPurchase(myGarden, 5)"></img></button>
+            </div>
+            <div class=item id=flower2>
+                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
+                        onclick="beginPurchase(myGarden, 6)"></img></button>
+            </div>
+            <div class=item id=flower3>
+                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
+                        onclick="beginPurchase(myGarden, 7)"></img></button>
             </div>
         </div>
         <div class=GardenRow id=row2>
-            <div class=item id=flower>
+            <div class=item id=flower0>
                 <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 0)"></img></button>
+                        onclick="beginPurchase(myGarden, 8)"></img></button>
             </div>
             <div class=item id=flower1>
                 <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 0)"></img></button>
+                        onclick="beginPurchase(myGarden, 9)"></img></button>
             </div>
             <div class=item id=flower2>
                 <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 0)"></img></button>
+                        onclick="beginPurchase(myGarden, 10)"></img></button>
             </div>
             <div class=item id=flower3>
                 <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 0)"></img></button>
+                        onclick="beginPurchase(myGarden, 11)"></img></button>
             </div>
         </div>
         <div class=GardenRow id=row3>
             <div class=item id=flower>
                 <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 0)"></img></button>
+                        onclick="beginPurchase(myGarden, 12)"></img></button>
             </div>
             <div class=item id=flower1>
                 <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 0)"></img></button>
+                        onclick="beginPurchase(myGarden, 13)"></img></button>
             </div>
             <div class=item id=flower2>
                 <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 0)"></img></button>
+                        onclick="beginPurchase(myGarden, 14)"></img></button>
             </div>
             <div class=item id=flower3>
                 <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 0)"></img></button>
-            </div>
-        </div>
-        <div class=GardenRow id=row4>
-            <div class=item id=flower>
-                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 0)"></img></button>
-            </div>
-            <div class=item id=flower1>
-                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 0)"></img></button>
-            </div>
-            <div class=item id=flower2>
-                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 0)"></img></button>
-            </div>
-            <div class=item id=flower3>
-                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 0)"></img></button>
+                        onclick="beginPurchase(myGarden, 15)"></img></button>
             </div>
         </div>
     </div>
