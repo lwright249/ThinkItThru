@@ -4,10 +4,17 @@ let timers = {};
 function deleteTask(element) {
     const taskCard = element.closest('.card');
 
-    //remove element from TaskList
+    /*
+    remove element from TaskList
+    */
+    //First, get the id and take the index number out of the string
     let elementID = element.getAttribute("id");
+    //elementID = elementID.substring....
     console.log(elementID);
     console.log(element)
+
+    //Remove the item at that index from the TaskList
+    //How do I get the user!!!!!!!?
 
 
 
