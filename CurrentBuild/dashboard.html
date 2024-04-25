@@ -6,60 +6,12 @@
     <title>ThinkItThru!</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="Scripts/toggleTimer.js"></script>
+    <script type="text/javascript" src="Scripts/dashboard.js"></script>
     <script type="text/javascript" src="Scripts/dailyTasks.js"></script>
-    <style>
-        body {
-            background-color: #e2ae67; /* Site background color */
-        }
-        .navbar-custom {
-            background-color: #AA8C66; /* Custom color for the navbar */
-            border: 1px solid black; /* Black border for the navbar */
-        }
-        .task-card {
-            background-color: #e4dbd1; /* Card background color */
-            min-height: 150px;
-            border: 1 px solid black; /* No border for cards */
-            margin-bottom: 30px; /* Increased vertical spacing between cards */
-        }
-        .card-body {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Two columns */
-            grid-template-rows: 1fr 1fr; /* Two rows */
-            gap: 10px; /* Space between grid items */
-            align-items: center; /* Center-align items vertically */
-        }
-        .card-title {
-            grid-column: 1; /* First column */
-            grid-row: 1; /* First row */
-        }
-        .clock-btn {
-            background-color: #AA8C66; /* Clock In/Out button color */
-            grid-column: 2; /* Second column */
-            grid-row: 1; /* First row */
-            justify-self: end; /* Align to the right */
-            border: none; /* No border for the button */
-        }
-        .clock-btn:hover {
-            background-color: #ec482b; /* Button highlight color on hover */
-        }
-        .timer:first-of-type {
-            grid-column: 1; /* First column */
-            grid-row: 2; /* Second row */
-        }
-        .timer:last-of-type {
-            grid-column: 2; /* Second column */
-            grid-row: 2; /* Second row */
-            justify-self: end; /* Align to the right */
-        }
-
-        @media (max-width: 768px) {
-            .task-card {
-                margin-bottom: 20px; /* Larger margin at smaller screen sizes */
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="Styles/dashStyle.css">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
@@ -74,6 +26,7 @@
                     <li class="nav-item"><a class="nav-link" href="#">Previous Work Stats</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Connect With Others</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Profile Settings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -84,6 +37,16 @@
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card task-card">
+                    <div class="dropdown">
+                        <button class ="btn btn-secondary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i clas="bi bi-list">Options</i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="totaltasklayout.html">Edit Task</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="deleteTask(this)">Delete Task</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="completeTask(this)">Complete Task</a></li>
+                        </ul>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Task Name</h5>
                         <button class="btn btn-primary clock-btn" onclick="toggleTimer(this, 'timer1')">Clock In</button>
@@ -95,6 +58,16 @@
             <!------------- We can keep copying this to add more ------------------->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card task-card">
+                    <div class="dropdown">
+                        <button class ="btn btn-secondary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i clas="bi bi-list">Options</i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="totaltasklayout.html">Edit Task</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="deleteTask(this)">Delete Task</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="completeTask(this)">Complete Task</a></li>
+                        </ul>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Another Task</h5>
                         <button class="btn btn-primary clock-btn" onclick="toggleTimer(this, 'timer2')">Clock In</button>
@@ -106,6 +79,16 @@
             <!---------------- We can keep copying above to add more --------------->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card task-card">
+                    <div class="dropdown">
+                        <button class ="btn btn-secondary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i clas="bi bi-list">Options</i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="totaltasklayout.html">Edit Task</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="deleteTask(this)">Delete Task</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="completeTask(this)">Complete Task</a></li>
+                        </ul>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Third Task</h5>
                         <button class="btn btn-primary clock-btn" onclick="toggleTimer(this, 'timer3')">Clock In</button>

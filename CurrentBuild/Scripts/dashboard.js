@@ -1,5 +1,18 @@
 let timers = {};
 
+
+function deleteTask(element) {
+    const taskCard = element.closest('.card');
+    taskCard.remove(); // Removes the task card from the DOM
+}
+
+function completeTask(element) {
+    const taskCard = element.closest('.card');
+    taskCard.remove(); // Example action, remove the task card
+    // Additional actions can be added here, like updating the database
+}
+
+
 function toggleTimer(button, timerId) {
     const timerDisplay = document.getElementById(timerId);
     if (!timers[timerId]) {

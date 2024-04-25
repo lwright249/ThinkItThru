@@ -1,0 +1,54 @@
+body {
+    background-color: #e2ae67; /* Site background color */
+}
+.navbar-custom {
+    background-color: #AA8C66; /* Custom color for the navbar */
+    border: 1px solid black; /* Black border for the navbar */
+}
+.task-card {
+    background-color: #e4dbd1; /* Card background color */
+    min-height: 150px;
+    border: 1 px solid black; /* No border for cards */
+    margin-bottom: 30px; /* Increased vertical spacing between cards */
+    padding: 10px;
+}
+.card-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    grid-template-rows: 1fr 1fr; /* Two rows */
+    gap: 10px; /* Space between grid items */
+    align-items: center; /* Center-align items vertically */
+}
+.card-title {
+    grid-column: 1; /* First column */
+    grid-row: 1; /* First row */
+}
+.clock-btn {
+    background-color: #AA8C66; /* Clock In/Out button color */
+    grid-column: 2; /* Second column */
+    grid-row: 1; /* First row */
+    justify-self: end; /* Align to the right */
+    border: none; /* No border for the button */
+}
+.clock-btn:hover {
+    background-color: #ec482b; /* Button highlight color on hover */
+}
+.timer:first-of-type {
+    grid-column: 1; /* First column */
+    grid-row: 2; /* Second row */
+}
+.timer:last-of-type {
+    grid-column: 2; /* Second column */
+    grid-row: 2; /* Second row */
+    justify-self: end; /* Align to the right */
+}
+.bi-list {
+    font-size: 24px; /* Adjust size */
+    color: #333; /* Adjust color */
+}
+
+@media (max-width: 768px) {
+    .task-card {
+        margin-bottom: 20px; /* Larger margin at smaller screen sizes */
+    }
+}
