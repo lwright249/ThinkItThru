@@ -63,6 +63,12 @@ function toggleTimer(button, timerId) {
         //add time to Task from TaskList
         addTimeToUserTask(elementID, timeToAdd);
 
+        //award user based on number of minutes worked (other calculations done in awardUser)
+        awardUser(timeToAdd);
+
+        //checks if user gets bonus award
+        checkAwardObjective(Math.floor(timer.time/60), elementID);
+
         //TODO: delete this next line when done testing
         //displayTasks();
     }

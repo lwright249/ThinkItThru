@@ -32,6 +32,10 @@ function awardUser(xp){
     //TODO: update serverside
 }
 
+function checkAwardObjective(minutes, index){
+    //not implemented here
+}
+
 function addTimeToUserTask(index, minutes){
     let task = newUser.userTasks.getTask(index);
     task.timeWorked += minutes;

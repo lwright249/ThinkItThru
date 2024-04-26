@@ -195,7 +195,7 @@ class Objective{
         }
     }
     printObjective(){
-        console.log("Work on " + this.objName + " for " + Math.floor(this.timeToWork) + " minutes")
-        return("Work on " + this.objName + " for " + Math.floor(this.timeToWork) + " minutes");
+        console.log("Work on " + this.objName + " for " + Math.ceil(this.timeToWork) + " minutes")
+        return("Work on " + this.objName + " for " + Math.ceil(this.timeToWork) + " minutes");
     }
 }

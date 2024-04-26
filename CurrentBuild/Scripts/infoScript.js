@@ -19,6 +19,12 @@ class User{
         this.dailyObjectives = dailyObjectives;
         this.weeklyObjectives = weeklyObjectives;
     }
+
+    /*
+    award(amount){
+        xpReward = amount * this.xpGardenMultiplier * 10;
+        this.xp += xpReward;
+    }*/
 }
 
 //parent class for Task and SubTask

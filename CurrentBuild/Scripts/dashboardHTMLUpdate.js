@@ -9,7 +9,6 @@ newUser.userTasks.taskList[1].addSubTask(new SubTask("subtask one"));
 
 objList = new DailyObjectivesList(newUser.userTasks);
 
-console.log("OBJ LIST")
 objList.displayObjectivesList();
 
 
@@ -27,10 +26,20 @@ function removeTaskFromUser(index){
     newUser.userTasks.logTasks();
 }
 
-function awardUser(xp){
-    newUser.xp = newUser.xp + xp;
+//takes number of minutes worked and awards user
+function awardUser(amount){
+    xpReward = amount * newUser.xpGardenMultiplier * 10;
+    newUser.xp+= xpReward;
     //TODO: reload html when available!!!!!
     //TODO: update serverside
+    console.log(newUser.xp)
+}
+
+function checkAwardObjective(minutes, index){
+    //if(objList.objectivesList[index].timeToWork <= minutes){
+        awardUser(objList.objectivesList[index].timeToWork)
+        console.log(newUser.xp)
+    //}
 }
 
 function addTimeToUserTask(index, minutes){
