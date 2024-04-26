@@ -87,11 +87,7 @@ class DailyObjectivesList{
 
             totalTime += timeToWorkInDay;
 
-            //console.log(timeToWorkInDay + "minutes to work on " + today + " and " + totalTime + "to work in total");
-
             //check if this day's date is less than today
-            //console.log("days left: " + (day.dayDate.getDate() - today.getDate()))
-            //if((day.dayDate.getDate() - today.getDate()) >= 1){
             if(DateManipulation.daysUntilDue(day.dayDate) >= 1){
                 //ceiling becomes total minutes of work / (days remaining + 1)
                 newCeiling = (totalTime / ( (DateManipulation.daysUntilDue(day.dayDate))+1));
