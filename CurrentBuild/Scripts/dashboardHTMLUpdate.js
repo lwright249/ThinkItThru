@@ -1,3 +1,5 @@
+
+
 let newUser = new User("John", "Doe", 13123123, "CSCI", 5000, 1.1, 1, new TaskList(), "aaaaaaaaaaaaaaaa");
 newUser.userTasks.addTask(new Task("CSCI 4600 Homework 4", 65, priority.HIGH, new Date(2024, 3, 28)));
 newUser.userTasks.addTask(new Task("Essay", 100, priority.MED, new Date(2024, 3, 30)));
