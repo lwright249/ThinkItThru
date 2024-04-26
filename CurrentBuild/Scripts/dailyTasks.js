@@ -67,7 +67,7 @@ class DailyObjectivesList{
     }
 
     //TODO: this does not implement recurring tasks I don't think (we could always set the due date for recurring tasks as every saturday)
-    //actually creates daily objectives list
+    //actually creates daily objectives list from Task List
     createObjectives(){
         let oldCeiling = 0;
         let newCeiling = 0;
@@ -87,15 +87,10 @@ class DailyObjectivesList{
 
             totalTime += timeToWorkInDay;
 
-            //console.log(timeToWorkInDay + "minutes to work on " + today + " and " + totalTime + "to work in total");
-
             //check if this day's date is less than today
-            //console.log("days left: " + (day.dayDate.getDate() - today.getDate()))
-            //if((day.dayDate.getDate() - today.getDate()) >= 1){
             if(DateManipulation.daysUntilDue(day.dayDate) >= 1){
                 //ceiling becomes total minutes of work / (days remaining + 1)
                 newCeiling = (totalTime / ( (DateManipulation.daysUntilDue(day.dayDate))+1));
-                console.log(newCeiling)
             }
             //if task overdue, it treats it as if the task is due today (just like being divided by one)
             else{
@@ -106,12 +101,10 @@ class DailyObjectivesList{
             if(newCeiling > oldCeiling){
 
                 day.indexList.forEach(index => {
-                    console.log("new ceiling higher");
+                    
                     let timeToWorkOnTask = this.objTaskList.taskList[index].getTimeRemaining();
                     timeToAdd = (newCeiling - oldCeiling) * (timeToWorkOnTask / timeToWorkInDay);
-                    //console.log("time added: " + timeToAdd);
-
-                    //console.log("current task: " + this.objTaskList.taskList[index].name);
+                    
                     let newObjective = new Objective(this.objTaskList.taskList[index].name, timeToAdd, index);
                     this.objectivesList.push(newObjective);
 
@@ -128,31 +121,21 @@ class DailyObjectivesList{
 
     }
 
-    checkObjectivesComplete(){
-
-    }
-
-    awardPlayer(){
-
-    }
-
     displayObjectivesList(){
-        console.log("starting")
         this.objectivesList.forEach(objective => {
-            console.log("printing each objective in list");
             objective.printObjective();
 
         })
     }
 
-    //temporary!!!
+    /*/temporary!!!
     printDayList(){
         console.log("printint day list:");
         this.dayList.forEach(dayInList => {
             console.log("printing")
             dayInList.printDay();
         });
-    }
+    }*/
 
 
 }
