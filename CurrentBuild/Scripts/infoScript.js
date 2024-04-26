@@ -23,7 +23,7 @@ class User{
 
 //parent class for Task and SubTask
 class BasicTask{
-    constructor(name, timeReq){
+    constructor(name, timeReq = 0){
         this.name = name;
         this.timeReq = timeReq;
         this.isCompleted = false;
@@ -54,12 +54,12 @@ class BasicTask{
 }
 
 class Task extends BasicTask{ //maybe i remove basictask and hope noone notices, it might just make my life easier
-    constructor(name, timeReq, taskPriority, dueDate, subtasksList = null){
+    constructor(name, timeReq, taskPriority, dueDate, subtasksList = []){
         super();
         this.timeWorked = 0;
         this.isCompleted = false;
 
-        if(subtasksList == null){
+        if(subtasksList == []){
             this.hasSubTasks = false;
         }
         else{
@@ -127,10 +127,18 @@ class Task extends BasicTask{ //maybe i remove basictask and hope noone notices,
         return DateManipulation.daysUntilDue(this.dueDate);
     }
 
+    addSubTask(subtask){
+        if(this.hasSubTasks == false){
+            this.hasSubTasks = true;
+        }
+        this.subtasksList.push(subtask);
+    }
+
 }
 
 //not implemented yet
 class SubTask extends BasicTask{
+
     //do I need subtask index here?
 
     getName(){
