@@ -50,10 +50,38 @@
                     <div class="meta" id="user-email">
                         someemail@gmail.com
                     </div>
-                    <div class="extra content">
-                        <button class="ui button red tiny" id="logout-btn">Log out</button>
-                    </div>
                 </div>
+
+                <form class="ui form big">
+                    <div class="ui stacked segment">
+                        <div class="field">
+                            <div class="ui left icon input big">
+                                <i class="user icon"></i>
+                                <input type="text" placeholder="First Name" id="update-name" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <select class="ui dropdown" id="update-major">
+                                <option value="">Major</option>
+                                <option value="4">Business</option>
+                                <option value="3">Health</option>
+                                <option value="2">Social Sciences/History</option>
+                                <option value="1">Engineering</option>
+                                <option value="0">Computer Science</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input big">
+                                <i class="mail icon"></i>
+                                <input type="text" placeholder="Email" id="update-email" />
+                            </div>
+                        </div>
+                        <button class="ui button grey fluid big" id="update-btn">Update</button>
+                    </div>
+                    <div class="extra content">
+                        <button class="ui button big red" id="logout-btn">Log out</button>
+                    </div>
+                </form>
             </div>
         </div>
         <!------------ LOG IN FORM ------------->

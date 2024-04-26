@@ -16,6 +16,10 @@
     min-width: 400px;
     text-align: center;
 }
+#logout-btn {
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
 
 #user-profile {
     display: none;

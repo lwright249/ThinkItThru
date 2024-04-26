@@ -1,4 +1,3 @@
-import { Firestore, Timestamp } from "firebase/firestore";
 import {
     getAuth,
     createUserWithEmailAndPassword,
@@ -11,11 +10,12 @@ import {
     signInWithPopup
  } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
-import {
+ import {
     getFirestore,
     doc,
     setDoc,
     getDoc,
+    updateDoc
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
 const auth = getAuth();
@@ -25,7 +25,7 @@ const date = new Date();
 let currentDay= String(date.getDate()).padStart(2,'0');
 let currentMonth= String(date.getMonth()+1).padStart(2,'0');
 let currentYear= date.getFullYear();
-//let currentDate= `${currentMonth}-${currentDay}-${currentYear}`;
+let currentDate= `${currentMonth}-${currentDay}-${currentYear}`;
 
 const mainView = document.getElementById("main-view");
 
@@ -44,6 +44,10 @@ const haveAnAccountBtn = document.getElementById("have-an-account-btn");
 const userProfileView = document.getElementById("user-profile");
 const UIuserEmail = document.getElementById("user-email");
 const logOutBtn =  document.getElementById("logout-btn");
+const updateName = document.getElementById("update-name");
+const updateEmail = document.getElementById("update-email");
+const updateMajor = document.getElementById("update-major");
+const updateBtn = document.getElementById("update-btn");
 
 const resetPasswordForm = document.getElementById("reset-password-form");
 const forgotPasswordBtn = document.getElementById("forgot-password-btn");
@@ -60,23 +64,27 @@ const loginErrorMessage = document.getElementById("login-error-message");
 const needAnAccountBtn = document.getElementById("need-an-account-btn");
 
 onAuthStateChanged(auth, async (user) => {
-    // console.log(user);
+    console.log(user);
     if(user) {
 
         if(!user.emailVerified) {
             emailVerificationView.style.display = "block";
             userProfileView.style.display = "none";
-        } /*else if (user.emailVerified) {
-            window.location.href="dashboard.html";
+        }/*else if (user.emailVerified) {
+            //window.location.href="dashboard.html";
         }*/ else {
             userProfileView.style.display = "block";
             UIuserEmail.innerHTML = user.email;
             emailVerificationView.style.display = "none";
             
-            const docRef = doc(db, "users", user.uid);
             try {
+                const docRef = doc(db, "users", user.uid);
                 const docSnap = await getDoc(docRef);
                 console.log(docSnap.data());
+                updateName.value = docSnap.data().name;
+                updateMajor.value = docSnap.data().major;
+                updateEmail.value = docSnap.data().email;
+
             } catch (error) {
                 console.log(error);
             }
@@ -112,7 +120,7 @@ const signUpButtonPressed = async (e) => {
             email: email.value,
             exp: 0,
             streak: 0,
-            //lastLogin: currentDate,
+            lastLogin: currentDate,
             gameboard: "",
         });
 
@@ -146,7 +154,7 @@ const loginButtonPressed = async (e) => {
             loginPassword.value
         );
 
-        window.location.href="dashboard.html";
+        //window.location.href="dashboard.html";
     } catch(error) {
         console.log(error.code);
         console.log(formatErrorMessage(error.code, "login"));
@@ -196,7 +204,22 @@ const loginWithGoogleButtonPressed = async (e) => {
     try {
         await signInWithPopup(auth, googleProvider);
 
-        window.location.href="dashboard.html";
+        //window.location.href="dashboard.html";
+    } catch (error) {
+        console.log(error.code);
+    }
+}
+
+const updateUserProfileButtonPressed = async (e) => {
+    e.preventDefault();
+    
+    try{
+        const docRef = doc (db, "users", auth.currentUser.uid);
+        await updateDoc(docRef, {
+            name: updateName.value,
+            major: updateMajor.value,
+            email: updateEmail.value
+        });
     } catch (error) {
         console.log(error.code);
     }
@@ -211,6 +234,7 @@ resendEmailBtn.addEventListener("click", resendButtonPressed);
 forgotPasswordBtn.addEventListener("click", forgotPasswordButtonPressed);
 resetPasswordBtn.addEventListener("click", resetPasswordButtonPressed);
 loginWithGoogleBtn.addEventListener("click", loginWithGoogleButtonPressed);
+updateBtn.addEventListener("click", updateUserProfileButtonPressed);
 
 const formatErrorMessage = (errorCode, action) => {
     let message = "";
