@@ -70,9 +70,9 @@ onAuthStateChanged(auth, async (user) => {
         if(!user.emailVerified) {
             emailVerificationView.style.display = "block";
             userProfileView.style.display = "none";
-        }/*else if (user.emailVerified) {
-            //window.location.href="dashboard.html";
-        }*/ else {
+        }else if (user.emailVerified) {
+            window.location.href="dashboard.html";
+        } else {
             userProfileView.style.display = "block";
             UIuserEmail.innerHTML = user.email;
             emailVerificationView.style.display = "none";
@@ -154,7 +154,7 @@ const loginButtonPressed = async (e) => {
             loginPassword.value
         );
 
-        //window.location.href="dashboard.html";
+        window.location.href="dashboard.html";
     } catch(error) {
         console.log(error.code);
         console.log(formatErrorMessage(error.code, "login"));
@@ -204,7 +204,7 @@ const loginWithGoogleButtonPressed = async (e) => {
     try {
         await signInWithPopup(auth, googleProvider);
 
-        //window.location.href="dashboard.html";
+        window.location.href="dashboard.html";
     } catch (error) {
         console.log(error.code);
     }
