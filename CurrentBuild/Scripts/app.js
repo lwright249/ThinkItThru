@@ -1,3 +1,4 @@
+import { Firestore, Timestamp } from "firebase/firestore";
 import {
     getAuth,
     createUserWithEmailAndPassword,
@@ -24,7 +25,7 @@ const date = new Date();
 let currentDay= String(date.getDate()).padStart(2,'0');
 let currentMonth= String(date.getMonth()+1).padStart(2,'0');
 let currentYear= date.getFullYear();
-let currentDate= `${currentMonth}-${currentDay}-${currentYear}`;
+//let currentDate= `${currentMonth}-${currentDay}-${currentYear}`;
 
 const mainView = document.getElementById("main-view");
 
@@ -111,7 +112,7 @@ const signUpButtonPressed = async (e) => {
             email: email.value,
             exp: 0,
             streak: 0,
-            lastLogin: currentDate,
+            //lastLogin: currentDate,
             gameboard: "",
         });
 
