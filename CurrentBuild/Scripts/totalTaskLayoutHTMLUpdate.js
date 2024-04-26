@@ -1,19 +1,27 @@
 let newUser = new User("John", "Doe", 13123123, "CSCI", 5000, 1.1, 1, new TaskList(), "aaaaaaaaaaaaaaaa");
-newUser.userTasks.addTask(new Task("task one", 200, priority.HIGH, new Date(2024, 4, 5)));
-newUser.userTasks.addTask(new Task("task two", 200, priority.MED, new Date(2024, 4, 6)));
-newUser.userTasks.addTask(new Task("task three", 200, priority.LOW, new Date(2024, 4, 4)));
-newUser.userTasks.addTask(new Task("task four", 20, priority.LOW, new Date(2024, 4, 20)));
+newUser.userTasks.addTask(new Task("CSCI 4600 Homework 4", 65, priority.HIGH, new Date(2024, 3, 28)));
+newUser.userTasks.addTask(new Task("Essay", 100, priority.MED, new Date(2024, 3, 30)));
+let junit = new Task("CSCI 4601 JUnit Assignment", 95, priority.LOW, new Date(2024, 4, 2));
+junit.timeWorked = 25;
+newUser.userTasks.addTask(junit);
+newUser.userTasks.addTask(new Task("Register for Fall classes", 40, priority.LOW, new Date(2024, 3, 30)));
+newUser.userTasks.addTask(new Task("Pushups", 10, priority.LOW, new Date(2024, 5, 30)));
+newUser.userTasks.logTasks();
+newUser.userTasks.taskList[1].addSubTask(new SubTask("Do research"));
+newUser.userTasks.taskList[1].addSubTask(new SubTask("Write outline"));
+newUser.userTasks.taskList[1].addSubTask(new SubTask("Give up and use ChatGPT"));
 
 
 newUser.userTasks.logTasks();
 newUser.userTasks.taskList[1].addSubTask(new SubTask("subtask one"));
-console.log(newUser.userTasks.taskList[1].getSubTaskListSize());
+//console.log(newUser.userTasks.taskList[1].getSubTaskListSize());
 
 objList = new DailyObjectivesList(newUser.userTasks);
 
 
 
 displayTasks();
+displayXP();
 
 //remove element from TaskList
 /*
@@ -30,6 +38,7 @@ function awardUser(xp){
     newUser.xp = newUser.xp + xp;
     //TODO: reload html when available!!!!!
     //TODO: update serverside
+    displayXP();
 }
 
 function checkAwardObjective(minutes, index){
@@ -128,10 +137,8 @@ function displayTasks(){
         //TODO GET OBJECTIVES WORKING WITH THE HTML
         html += "</div>";
 
-        console.log(newUser.userTasks.taskList[i].getSubTaskListSize());
         if(!(subtasksList == null)){
             for(let j = 0; j < subtasksList.length; j++){
-                console.log("SUBTASK");
                 html += "<div class=\"task-extension subtask\">- "+ subtasksList[j].name;
                 html += "<input type=\"checkbox\" class=\"task-checkbox\" id=\"task"+i+"-subtask"+j+"-checkbox\" onclick = \"changeUserSubtask("+i+","+j+")\"/>";
                 html += "<label for=\"task"+i+"-subtask"+j+"-checkbox\" class=\"checkbox-label\"></label></div>"
@@ -142,5 +149,11 @@ function displayTasks(){
         html += "</div></div>";
     }
     html += "</div>";
+    div.innerHTML = html;
+}
+
+function displayXP(){
+    let div = document.getElementById("xp");
+    let html = newUser.xp + " xp";
     div.innerHTML = html;
 }

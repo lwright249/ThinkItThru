@@ -147,27 +147,27 @@ class TaskList{
         
         //makes sure the taskList actually has something in it, also checks if we should just add the task to the back (for speeeeed)
         if(this.taskList.length > 0 && newTaskQueueScore > this.taskList[this.taskList.length - 1].getQueueScore()){
-            console.log("NOT pushed to back");
-            console.log("tasklist length: " + this.taskList.length);
+            //console.log("NOT pushed to back");
+            //console.log("tasklist length: " + this.taskList.length);
 
             //let listLength = this.taskList.length;
             let newTaskPushed = false;
             
             for(let i = 0; (i < this.taskList.length && !newTaskPushed); i++){
-            console.log("iteration: " + i);
+            //console.log("iteration: " + i);
             let iterationQueueScore = this.taskList[i].getQueueScore();
-                console.log("comparing " + newTaskQueueScore + " to " + iterationQueueScore);
+                //console.log("comparing " + newTaskQueueScore + " to " + iterationQueueScore);
 
                 if(newTaskQueueScore > iterationQueueScore){
-                    console.log("pushing in middle");
+                    //console.log("pushing in middle");
                     this.taskList.splice(i, 0, task);
                     newTaskPushed = true;
                 }
             }
         }
         else{
-            console.log("pushed to back");
-            console.log("list length: " + this.taskList.length);
+            //console.log("pushed to back");
+            //console.log("list length: " + this.taskList.length);
             this.taskList.push(task);
         }
 

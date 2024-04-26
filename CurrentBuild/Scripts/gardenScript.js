@@ -16,7 +16,7 @@ class Garden{
         }
         //do nothing is purchase invalid
         if(!this.validatePurchase()){
-            console.log("validate purchase fail");
+            console.log("validate purchase fail: NOT ENOUGH XP");
             return; //TODO: maybe make alert for bad purchase?
         }
         updateScreen(this);
@@ -85,7 +85,6 @@ class Garden{
         this.user.gardenStr = newString;
 
         console.log(this.user.gardenStr);
-        console.log("attempting to update xp garden mult");
 
         this.updateUserXPGardenMultiplier();
 
@@ -135,12 +134,11 @@ class Garden{
 
 function updateStoreItem(garden, item){
     garden.selectedStoreItem = item;
-    console.log("updating item" + garden.selectedStoreItem);
+    //console.log("updating item " + garden.selectedStoreItem);
 }
 
 function beginPurchase(garden, tile){
     garden.selectedTile = tile;
-    console.log("updating tile" + garden.selectedTile);
     garden.userPurchase();
 }
 
@@ -169,7 +167,6 @@ function updateScreen(garden){
     let string = garden.gardenStr;
     let html = "";
     var gardenDiv = document.getElementById("garden");
-    console.log(gardenDiv);
 
     for(let i = 0; i < 4; i++){
         html += "<div class=GardenRow id=row"+i+">";
@@ -215,6 +212,6 @@ function updateScreen(garden){
     }
 
     gardenDiv.innerHTML = html;
-    
+    displayXP();
 }
 
