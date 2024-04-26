@@ -44,16 +44,11 @@ class BasicTask{
 
     getIsCompleted(){
         return this.isCompleted;
-    }
-
-    rewardPlayer(xp){
-        //TODO implement this sometime
-    }
-    
+    }  
 
 }
 
-class Task extends BasicTask{ //maybe i remove basictask and hope noone notices, it might just make my life easier
+class Task extends BasicTask{
     constructor(name, timeReq, taskPriority, dueDate, subtasksList = []){
         super();
         this.timeWorked = 0;
@@ -83,29 +78,7 @@ class Task extends BasicTask{ //maybe i remove basictask and hope noone notices,
         return this.subtasksList[index];
     }
 
-    update(){
-        //TODO remove
-    }
-
-    startTime(){
-        //I need to see if this is still useful
-        //maybe change to update time for the task?
-    }
-
-    pauseTime(){
-        //again is this useful
-    }
-
-    finishTask(){
-       //reward player
-       //delete this task from the TaskList 
-    }
-
-    //TODO temporary thing
-    printName(){
-        console.log(this.name);
-    }
-
+   
     //prints the Task information, used to show TaskList items to console
     getInfo(){
         let infoString = "Name: " + this.name + " | " + this.timeWorked + " / " + this.timeReq + " minutes worked" + " | " + this.taskPriority + " priority" + " | " + this.getDaysUntilDue() + " day(s) remaining" + " | queueScore = " + this.getQueueScore();
@@ -202,7 +175,6 @@ class TaskList{
     }
 
     removeTask(index){
-        //TODO test this
         this.taskList.splice(index,1);
     }
 
@@ -215,7 +187,6 @@ class TaskList{
         this.taskList.forEach(
             t => {
                 console.log(t.getInfo());
-                //TODO: this should create html on the dashboard that displays it instead
             }
         )
     }
