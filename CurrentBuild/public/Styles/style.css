@@ -1,0 +1,52 @@
+#main-view {
+    height:100vh;
+    background-color: #e2ae67;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-form {
+    min-width: 400px;
+    text-align: center;
+    display: none;
+    text-align: center;
+}
+#login-form {
+    min-width: 400px;
+    text-align: center;
+}
+#logout-btn {
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+#user-profile {
+    display: none;
+}
+
+#user-email {
+    margin-bottom: 15px;
+}
+
+#email-verification {
+    display: none;
+    width: 400px;
+}
+
+#verify-body {
+    margin-top: 15px;
+}
+
+#forgot-password-btn {
+    font-size: 17px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+#reset-password-form {
+    display: none;
+}
+
+#login-with-google-btn {
+    margin-bottom: 10px;
+}

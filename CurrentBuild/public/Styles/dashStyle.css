@@ -1,0 +1,148 @@
+body {
+    background-color: #e2ae67; /* Site background color */
+}
+.navbar-custom {
+    background-color: #AA8C66; /* Custom color for the navbar */
+    border: 1px solid black; /* Black border for the navbar */
+}
+.task-card {
+    background-color: #e4dbd1; /* Card background color */
+    min-height: 150px;
+    border: 1 px solid black; /* No border for cards */
+    margin-bottom: 30px; /* Increased vertical spacing between cards */
+    padding: 10px;
+}
+.card-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    grid-template-rows: 1fr 1fr; /* Two rows */
+    gap: 10px; /* Space between grid items */
+    align-items: center; /* Center-align items vertically */
+}
+.card-title {
+    grid-column: 1; /* First column */
+    grid-row: 1; /* First row */
+}
+.clock-btn {
+    background-color: #AA8C66; /* Clock In/Out button color */
+    grid-column: 2; /* Second column */
+    grid-row: 1; /* First row */
+    justify-self: end; /* Align to the right */
+    border: none; /* No border for the button */
+}
+.clock-btn:hover {
+    background-color: #ec482b; /* Button highlight color on hover */
+}
+.timer:first-of-type {
+    grid-column: 1; /* First column */
+    grid-row: 2; /* Second row */
+}
+.timer:last-of-type {
+    grid-column: 2; /* Second column */
+    grid-row: 2; /* Second row */
+    justify-self: end; /* Align to the right */
+}
+.bi-list {
+    font-size: 24px; /* Adjust size */
+    color: #333; /* Adjust color */
+}
+
+.task-extension {
+    background-color: #f3e9dc; /* Lighter shade than the card for distinction */
+    color: #333; /* Text color */
+    padding: 10px 20px; /* Padding for better text display */
+    margin: -1px 15px 15px 15px; /* Aligns visually with the card, adjusts bottom margin */
+    border: 1px solid #ccc; /* Subtle border if needed */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional shadow for depth */
+}
+.options-button {
+    background-color: #AA8C66;
+    color: white; /* White text color */
+    border: none; /* No border */
+    padding: 8px 16px; /* Top-bottom and left-right padding */
+}
+
+.options-button:hover, .options-button:focus {
+    background-color: #ec482b;
+}
+
+.task-extension {
+    position: relative;
+    padding-right: 40px; /* Give space for checkbox */
+}
+
+.task-checkbox {
+    display: none; /* Hide the default checkbox */
+}
+
+.checkbox-label {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+    background: white;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.task-checkbox:checked + .checkbox-label {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 0 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>') no-repeat center;
+    border-color: #4a90e2;
+}
+
+@media (max-width: 768px) {
+    .task-card {
+        margin-bottom: 20px; /* Larger margin at smaller screen sizes */
+    }
+}
+
+.btn-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 22px 27px;
+    background-color: #AA8C66;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-floating .btn-label {
+    display: none;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+.btn-floating:hover {
+    padding: 22px 32px;
+    border-radius: 25px; /* Smoothly transitions to a pill shape */
+}
+
+.btn-floating:hover .btn-label {
+    display: inline;
+}
+
+/* Styling for the submit button */
+#newTaskForm button[type="submit"] {
+    background-color: #AA8C66; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding for button size */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow */
+    transition: background-color 0.3s; /* Smooth transition for color change */
+}
+
+#newTaskForm button[type="submit"]:hover,
+#newTaskForm button[type="submit"]:active {
+    background-color: #ec482b; /* Color when hovered or clicked */
+}

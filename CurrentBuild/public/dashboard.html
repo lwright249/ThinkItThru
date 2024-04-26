@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThinkItThru!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="Scripts/dashboard.js"></script>
+    <script type="text/javascript" src="Scripts/dailyTasks.js"></script>
+    <script type="text/javascript" src="Scripts/timeScript.js"></script>
+    <script type="text/javascript" src="Scripts/infoScript.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="Styles/dashStyle.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="dashboard.html">ThinkItThru!</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Total Task Layout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Gameboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Previous Work Stats</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Connect With Others</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Profile Settings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2 class="mb-4">Today's Tasks:</h2>
+        <div class="row" id = "row">
+            <div class="col-12 col-md-6 col-lg-4" id = "task0">
+                <div class="card task-card">
+                    <div class="dropdown">
+                        <button class ="btn tan options-button" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i clas="bi bi-list">Options</i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="totaltasklayout.html">Edit Task</a></li>
+                            <li><a class="dropdown-item" id = "delete0" href="#" onclick="deleteTask(this)">Delete Task</a></li>
+                            <li><a class="dropdown-item" id = "complete0" href="#" onclick="completeTask(this)">Complete Task</a></li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Task Name</h5>
+                        <button class="btn btn-primary clock-btn" id="button0" onclick="toggleTimer(this, 'timer0')">Clock In</button>
+                        <span class="timer">00:00:00</span>
+                        <span class="timer" id="timer0">00:00:00</span>
+                    </div>
+                    <div class="task-extension">
+                        Work on this task for 20 minutes today.
+                    </div>
+                    <div class="task-extension subtask">
+                        - Subtask 1
+                        <input type="checkbox" class="task-checkbox" id="task0-subtask0-checkbox" onclick = "changeUserSubtask(0,0)"/>
+                        <label for="task0-subtask0-checkbox" class="checkbox-label"></label>
+                    </div>
+                    <div class="task-extension subtask">
+                        - Subtask 2
+                        <input type="checkbox" class="task-checkbox" id="task0-subtask1-checkbox" onclick = "changeUserSubtask(0,1)"/>
+                        <label for="task0-subtask1-checkbox" class="checkbox-label"></label>
+                    </div>
+                </div>
+            </div>
+            <!------------- We can keep copying this to add more ------------------->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card task-card">
+                    <div class="dropdown">
+                        <button class ="btn tan options-button" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i clas="bi bi-list">Options</i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="totaltasklayout.html">Edit Task</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="deleteTask(this)">Delete Task</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="completeTask(this)">Complete Task</a></li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Another Task</h5>
+                        <button class="btn btn-primary clock-btn" onclick="toggleTimer(this, 'timer2')">Clock In</button>
+                        <span class="timer">00:00:00</span>
+                        <span class="timer" id="timer2">00:00:00</span>
+                    </div>
+                    <div class="task-extension">
+                        Work on this task for 20 minutes today.
+                    </div>
+                    <div class="task-extension subtask">
+                        - Subtask 1
+                        <input type="checkbox" class="task-checkbox" id="task3-checkbox"/>
+                        <label for="task3-checkbox" class="checkbox-label"></label>
+                    </div>
+                    <div class="task-extension subtask">
+                        - Subtask 2
+                        <input type="checkbox" class="task-checkbox" id="task4-checkbox"/>
+                        <label for="task4-checkbox" class="checkbox-label"></label>
+                    </div>
+                </div>
+            </div>
+            <!---------------- We can keep copying above to add more --------------->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card task-card">
+                    <div class="dropdown">
+                        <button class ="btn tan options-button" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i clas="bi bi-list">Options</i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="totaltasklayout.html">Edit Task</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="deleteTask(this)">Delete Task</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="completeTask(this)">Complete Task</a></li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Third Task</h5>
+                        <button class="btn btn-primary clock-btn" onclick="toggleTimer(this, 'timer3')">Clock In</button>
+                        <span class="timer">00:00:00</span>
+                        <span class="timer" id="timer3">00:00:00</span>
+                    </div>
+                    <div class="task-extension">
+                        Work on this task for 20 minutes today.
+                    </div>
+                    <div class="task-extension subtask">
+                        - Subtask 1
+                        <input type="checkbox" class="task-checkbox" id="task5-checkbox"/>
+                        <label for="task5-checkbox" class="checkbox-label"></label>
+                    </div>
+                    <div class="task-extension subtask">
+                        - Subtask 2
+                        <input type="checkbox" class="task-checkbox" id="task6-checkbox"/>
+                        <label for="task6-checkbox" class="checkbox-label"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="addTaskButton" class="btn-floating" onclick="window.location.href='newtask.html';">
+        <i class="bi bi-plus"></i>
+        <span class="btn-label">New Task</span>
+    </button> 
+    
+    <script src="Scripts/firebase.js" type="module"></script>
+    <script type="text/javascript" src="Scripts/dashboardHTMLUpdate.js"></script>
+</body>
+</html>

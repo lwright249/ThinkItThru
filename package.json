@@ -4,12 +4,15 @@
   "description": "Task management and motivation system designed to help users reach professional and personal goals!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "start",
+    "build": "build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "firebase": "^10.11.0"
-  }
+  },
+  "devDependencies": {}
 }
