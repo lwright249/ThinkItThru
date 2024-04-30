@@ -23,11 +23,6 @@ displayXP();
 displayTasks();
 
 //remove element from TaskList
-/*
-let element = document.getElementById("")
-let elementID = element.getAttribute("id");
-console.log(elementID);*/
-
 function removeTaskFromUser(index){
     newUser.userTasks.removeTask(index);
     newUser.userTasks.logTasks();
@@ -37,7 +32,6 @@ function removeTaskFromUser(index){
 function awardUser(amount){
     xpReward = amount * newUser.xpGardenMultiplier * 10;
     newUser.xp+= Math.floor(xpReward);
-    //TODO: reload html when available!!!!!
     //TODO: update serverside
     console.log(newUser.xp);
     displayXP();
@@ -54,20 +48,16 @@ function checkAwardObjective(minutes, index){
 function addTimeToUserTask(index, minutes){
     let task = newUser.userTasks.getTask(index);
     task.timeWorked += minutes;
-    //console.log(task.timeWorked);
     newUser.userTasks.logTasks();
 
     //TODO: update serverside!
 
 }
 
-//task0-subtask0-checkbox
 function changeUserSubtask(taskIndex, subtaskIndex){
-    //console.log("task: " + taskIndex + "subtask: " + subtaskIndex);
     let checkbox = document.getElementById("task"+taskIndex+"-subtask"+subtaskIndex+"-checkbox");
     let isChecked = checkbox.checked;
 
-    //TODO: no idea if this works!!!!!
 
     let ownerTask = newUser.userTasks.getTask(taskIndex);
     let subtask = ownerTask.getSubTask(subtaskIndex);
@@ -78,47 +68,6 @@ function changeUserSubtask(taskIndex, subtaskIndex){
     //TODO: update serverside!
 }
 
-/*
-<div class="row" id = "row">
-            <div class="col-12 col-md-6 col-lg-4" id = "task0">
-                <div class="card task-card">
-                    <div class="dropdown">
-                        <button class ="btn tan options-button" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i clas="bi bi-list">Options</i>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="totaltasklayout.html">Edit Task</a></li>
-                            <li><a class="dropdown-item" id = "delete0" href="#" onclick="deleteTask(this)">Delete Task</a></li>
-                            <li><a class="dropdown-item" id = "complete0" href="#" onclick="completeTask(this)">Complete Task</a></li>
-                        </ul>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Task Name</h5>
-                        <button class="btn btn-primary clock-btn" id="button0" onclick="toggleTimer(this, 'timer0')">Clock In</button>
-                        <span class="timer">00:00:00</span>
-                        <span class="timer" id="timer0">00:00:00</span>
-                    </div>
-                    <div class="task-extension">
-                        Work on this task for 20 minutes today.
-                    </div>
-                    <div class="task-extension subtask">
-                        - Subtask 1
-                        <input type="checkbox" class="task-checkbox" id="task0-subtask0-checkbox" onclick = "changeUserSubtask(0,0)"/>
-                        <label for="task0-subtask0-checkbox" class="checkbox-label"></label>
-                    </div>
-                    <div class="task-extension subtask">
-                        - Subtask 2
-                        <input type="checkbox" class="task-checkbox" id="task0-subtask1-checkbox" onclick = "changeUserSubtask(0,1)"/>
-                        <label for="task0-subtask1-checkbox" class="checkbox-label"></label>
-                    </div>
-                </div>
-            </div>
-            <!------------- We can keep copying this to add more ------------------->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card task-card">
-                    <div class="dropdown">
-                        <button class ="btn tan
-*/
 function displayTasks(){
     let div = document.getElementById("row");
     let html = "";

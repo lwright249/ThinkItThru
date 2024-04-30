@@ -33,12 +33,5 @@ class DateManipulation {
         let minutesString = minutes.toString().padStart(2, '0');
         let secondsString = remainingSeconds.toString().padStart(2, '0');
         return hoursString + " : " + minutesString + " : " + secondsString;
-
-        /*const hStr = h.toString().padStart(2, '0');
-        const mStr = m.toString().padStart(2, '0');
-        const sStr = s.toString().padStart(2, '0');
-      
-        return `${hStr}:${mStr}:${sStr}`;
-        */
     }
 }
