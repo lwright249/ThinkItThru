@@ -5,8 +5,7 @@ class DailyObjectivesList{
 
         this.objectivesList = [];
         this.bonusMultiplier = 1;
-        //TODO ensure tasks in taskList marked complete when they are checked off on the website
-        //also find out if this var is necessary or covered by checkObjComplete??
+        //TODO unused in current build
         this.allObjectivesDone = false;
 
         this.createDayList();
@@ -15,19 +14,14 @@ class DailyObjectivesList{
 
     //used in constructor, creates the list of days due to create DailyObjectives
     createDayList(){
-        //this loop might break things
         for(let i = 0; i < this.objTaskList.taskList.length; i++){
 
             let currTaskDueDate = this.objTaskList.taskList[i].dueDate;
             let hasMatch = false;
 
-            //console.log("####task iteration: " + i + " due date: " + this.objTaskList.taskList[i].dueDate);
             //check if date of element matches Day that is already made
             this.dayList.forEach(dayElement => {
-                //console.log("curr task due date: " + currTaskDueDate);
-                //console.log("day Element date: "+ dayElement.dayDate);
                 if(currTaskDueDate.getTime() == dayElement.dayDate.getTime()){
-                    //console.log("equal");
                     hasMatch = true;
                     //add index of the task in objTaskList.taskList to the day
                     dayElement.add(i);
@@ -37,12 +31,10 @@ class DailyObjectivesList{
                 }
             });
 
-            //if no Day exists under that date,
+            //if no Day exists under that date, create a new Day for it!
             if(hasMatch == false){
                 let newDay = new Day(currTaskDueDate);
                 newDay.add(i);
-                //TODO change to push in place!!!!
-                //this.dayList.push(newDay);
                 this.pushInPlace(newDay);
             }
         }
@@ -51,8 +43,6 @@ class DailyObjectivesList{
     //used to create Day list, organizes days by order of.... days
     pushInPlace(dayToPush){
         let isPushedInMiddle = false;
-
-        //console.log("daylist len: " + this.dayList.length);
 
         for(let i = 0; i < this.dayList.length; i++){
             if (dayToPush.dayDate.getTime() < this.dayList[i].dayDate.getTime() && !isPushedInMiddle){
@@ -76,9 +66,9 @@ class DailyObjectivesList{
         let timeToWorkInDay = 0;
         let today = new Date();
 
-        //iterates through each "day" that has a task due
+        //iterates through each "Day" that has a task due
         this.dayList.forEach(day => {
-            timeToWorkInDay = 0; //maybe remove
+            timeToWorkInDay = 0;
             //totals time to work in this day
             day.indexList.forEach(index => {
                 timeToWorkInDay += this.objTaskList.taskList[index].getTimeRemaining();
@@ -127,16 +117,6 @@ class DailyObjectivesList{
 
         })
     }
-
-    /*/temporary!!!
-    printDayList(){
-        console.log("printint day list:");
-        this.dayList.forEach(dayInList => {
-            console.log("printing")
-            dayInList.printDay();
-        });
-    }*/
-
 
 }
 

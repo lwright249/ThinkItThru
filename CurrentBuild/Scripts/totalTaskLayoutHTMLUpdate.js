@@ -24,10 +24,6 @@ displayTasks();
 displayXP();
 
 //remove element from TaskList
-/*
-let element = document.getElementById("")
-let elementID = element.getAttribute("id");
-console.log(elementID);*/
 
 function removeTaskFromUser(index){
     newUser.userTasks.removeTask(index);
@@ -36,7 +32,6 @@ function removeTaskFromUser(index){
 
 function awardUser(xp){
     newUser.xp = newUser.xp + xp;
-    //TODO: reload html when available!!!!!
     //TODO: update serverside
     displayXP();
 }
@@ -48,16 +43,13 @@ function checkAwardObjective(minutes, index){
 function addTimeToUserTask(index, minutes){
     let task = newUser.userTasks.getTask(index);
     task.timeWorked += minutes;
-    //console.log(task.timeWorked);
     newUser.userTasks.logTasks();
 
     //TODO: update serverside!
 
 }
 
-//task0-subtask0-checkbox
 function changeUserSubtask(taskIndex, subtaskIndex){
-    //console.log("task: " + taskIndex + "subtask: " + subtaskIndex);
     let checkbox = document.getElementById("task"+taskIndex+"-subtask"+subtaskIndex+"-checkbox");
     let isChecked = checkbox.checked;
 

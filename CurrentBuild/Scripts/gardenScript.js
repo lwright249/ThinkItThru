@@ -142,27 +142,6 @@ function beginPurchase(garden, tile){
     garden.userPurchase();
 }
 
-/*
-<div class=Garden>
-        <div class=GardenRow id=row1>
-            <div class=item id=flower0>
-                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 0)"></img></button>
-            </div>
-            <div class=item id=flower1>
-                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 1)"></img></button>
-            </div>
-            <div class=item id=flower2>
-                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 2)"></img></button>
-            </div>
-            <div class=item id=flower3>
-                <button class="GameButton"><img src="Images/svgs/grasstile.svg"
-                        onclick="beginPurchase(myGarden, 3)"></img></button>
-            </div>
-        </div>
-*/
 function updateScreen(garden){
     let string = garden.gardenStr;
     let html = "";
